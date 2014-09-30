@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li ng-repeat="m in magazines" style="background-color: #{{m.color}}"><a ng-click="openDetail(m.id)">{{m.number}} - {{m.publish_date[language]}}</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="selectedMagazine">
+            <div class="page-header">
+                <h1>{{selectedMagazine.number}} <small>{{selectedMagazine.publish_date[language]}}</small></h1>
+            </div>
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Abstract:</h3>
+                        <p>{{selectedMagazine.abstract[language]}}</p>
+                        <h3>Content:</h3>
+                        <p>{{selectedMagazine.content[language]}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-left"></div>
+                        <div class="col-md-6 text-right">
+                            <button type="button" class="btn btn-default"><i class="fa fa-trash"></i></button>
+                            <button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
+                            <button type="button" class="btn btn-danger">Pubblica</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
