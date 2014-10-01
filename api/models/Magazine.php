@@ -15,7 +15,7 @@ class Magazine
     public $abstract;
     public $content;
     
-    public function __construct() {}
+    public function __construct() { }
     
     public static function getAll(){
         $magazine_array = array();

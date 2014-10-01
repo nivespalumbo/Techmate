@@ -1,0 +1,17 @@
+{
+	"number": 0,
+	"cover": "cover_0.jpg",
+   "color": "00c2ff",
+   "publish_date": {
+		"it" : "Giugno 2012",
+		"en" : "June 2012"
+	},
+	"abstract": {
+		"it": "Il computer si fa piccolo, ci segue ovunque e cambia il modo di usare la rete, vivere e lavorare. Come si adattano le aziende?",
+		"en": "PCs are getting smaller and smaller, they can follow you anywhere and they are changing the way people live, work and search the web. How are companies adapting to this new scenario?"
+	},
+	"content": {
+		"it": "In questo numero:\r\n\r\n- BYOD: tecnologie personalizzate\r\n- Il Tablet in azienda\r\n- Internet attraverso il mobile",
+		"en": "In this issue:\r\n\r\n- BYOD: customized technologies\r\n- The use of Tablets within companies\r\n- Internet through mobile devices"
+   }
+}
