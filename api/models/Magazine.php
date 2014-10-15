@@ -19,7 +19,7 @@ class Magazine
     
     public static function getAll(){
         $magazine_array = array();
-        foreach( new DirectoryIterator(DATA_PATH."/magazines/") as $file_info ) {
+        foreach( new DirectoryIterator("data/magazines/") as $file_info ) {
             if( $file_info->isFile() == true ) {
                 $serialized = file_get_contents($file_info->getPathname());
                 $unserialized = unserialize($serialized);
@@ -41,11 +41,11 @@ class Magazine
     }
     
     public static function get($id){
-        if( file_exists(DATA_PATH."/magazines/{$id}.txt") === false ) {
+        if( file_exists("data/magazines/{$id}.txt") === false ) {
             throw new Exception('Todo ID is invalid');
         }
 		
-        $serialized = file_get_contents(DATA_PATH."/magazines/{$id}.txt");
+        $serialized = file_get_contents("data/magazines/{$id}.txt");
         $unserialized = unserialize($serialized);
 		
         $magazine = new Magazine();
@@ -63,11 +63,11 @@ class Magazine
     
     public static function delete($id)
     {
-        if( file_exists(DATA_PATH."/magazines/{$id}.txt") === false ) {
+        if( file_exists("data/magazines/{$id}.txt") === false ) {
             throw new Exception('Todo ID does not exist!');
         }
 		
-        unlink(DATA_PATH."/magazines/{$id}.txt");
+        unlink("data/magazines/{$id}.txt");
         return true;
     }
 	
@@ -77,7 +77,7 @@ class Magazine
         $todo_item_array = $m->toArray();
 		
         //save the serialized array version into a file
-        $success = file_put_contents(DATA_PATH."/magazines/{$this->number}.txt", serialize($todo_item_array));
+        $success = file_put_contents("data/magazines/{$this->number}.txt", serialize($todo_item_array));
 		
         //if saving was not successful, throw an exception
         if( $success === false ) {

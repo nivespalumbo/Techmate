@@ -12,6 +12,7 @@
  * @author Nives
  */
 require_once 'API.php';
+require_once 'controllers/MagazineApiController.php';
 
 class ApiController extends API {
 
@@ -22,11 +23,22 @@ class ApiController extends API {
     /**
      * Example of an Endpoint
      */
-     protected function example() {
+    protected function example() {
         if ($this->method == 'GET') {
             return "Hello world";
         } else {
             return "Only accepts GET requests";
         }
-     }
+    }
+     
+    protected function magazine() {
+        if ($this->method == 'GET') {
+            if(array_count_values($this->args) > 0){
+                return MagazineApiController::get($this->args);
+            }
+            return MagazineApiController::get();
+        } else {
+            return "Only accepts GET requests";
+        }
+    }
 }
