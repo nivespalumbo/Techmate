@@ -9,7 +9,7 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.selectedLanguage = 'it';
     
     shared.getMagazines = function(){
-        $http.get("http://127.0.0.1:8210/Techmate/api/index.php?controller=magazine&action=getAll")
+        $http.get("http://127.0.0.1:8210/Techmate/api/example")
         .success(function(data){
             shared.magazines = data;
             shared.notifyPropertyChanged('magazines');
