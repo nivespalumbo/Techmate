@@ -7,6 +7,7 @@
  */
 class Magazine 
 {
+    public $id;
     public $number;
     public $cover;
     public $color;

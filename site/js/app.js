@@ -27,9 +27,8 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.saveMagazine = function (m) {
         $http.post('http://127.0.0.1:8210/Techmate/api/magazine/', m)
         .success(function (data) {
-            console.log(data);
-//            shared.magazines.push(data);
-//            shared.notifyPropertyChanged('magazines');
+            shared.magazines.push(data);
+            shared.notifyPropertyChanged('magazines');
         })
         .error(function (xhr) {
             console.log(xhr);

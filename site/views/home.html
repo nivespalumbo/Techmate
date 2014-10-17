@@ -5,7 +5,9 @@
                 <li><a class="btn btn-default" ng-href="#/magazine/new">Nuovo</a></li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li ng-repeat="m in magazines" style="background-color: #{{m.color}}"><a ng-click="openDetail(m.id)">{{m.number}} - {{m.publish_date[language]}}</a></li>
+                <li ng-repeat="m in magazines" style="background-color: #{{m.color}}">
+                    <a ng-click="openDetail(m.id)">{{m.number}} - {{m.publish_date[language]}}</a>
+                </li>
             </ul>
         </div>
 

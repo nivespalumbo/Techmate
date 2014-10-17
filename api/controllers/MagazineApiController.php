@@ -13,8 +13,11 @@ class MagazineApiController{
         }
     }
     
-    public static function save($m) {
-        $temp = new Magazine();
-        return $temp->save();
+    public static function save($data) {
+        $m = new Magazine();
+        foreach ($data as $key => $value) {
+            $m->$key = $value;
+        }
+        return $m->save();
     }
 }

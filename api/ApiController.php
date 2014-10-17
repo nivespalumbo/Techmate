@@ -20,17 +20,6 @@ class ApiController extends API {
     public function __construct($request) {
         parent::__construct($request);
     }
-
-    /**
-     * Example of an Endpoint
-     */
-    protected function example() {
-        if ($this->method == 'GET') {
-            return "Hello world";
-        } else {
-            return "Only accepts GET requests";
-        }
-    }
      
     protected function magazine() {
         if ($this->method == 'GET') {
@@ -39,7 +28,13 @@ class ApiController extends API {
             }
             return MagazineApiController::get();
         } else if($this->method == 'POST') {
-            return MagazineApiController::save($this->args);
+            $request_body = file_get_contents('php://input');
+            if($request_body != NULL) {
+                $data = json_decode($request_body);
+                return MagazineApiController::save($data);
+            } else {
+                throw new Exception("Wrong Request payload");
+            }
         } else if($this->method == 'PUT') {
             return "Gestire PUT";
         } else {
