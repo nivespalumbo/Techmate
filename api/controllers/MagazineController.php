@@ -2,7 +2,7 @@
 
 require_once 'models/Magazine.php';
 
-class MagazineApiController{
+class MagazineController{
     
     public static function get(Array $args = NULL){
         if($args && is_numeric($args[0])) {

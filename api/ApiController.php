@@ -12,8 +12,8 @@
  * @author Nives
  */
 require_once 'API.php';
-require_once 'controllers/MagazineApiController.php';
-require_once 'controllers/ArticleApiController.php';
+require_once 'controllers/MagazineController.php';
+require_once 'controllers/ArticleController.php';
 
 class ApiController extends API {
 
@@ -24,14 +24,14 @@ class ApiController extends API {
     protected function magazine() {
         if ($this->method == 'GET') {
             if(array_count_values($this->args) > 0){
-                return MagazineApiController::get($this->args);
+                return MagazineController::get($this->args);
             }
-            return MagazineApiController::get();
+            return MagazineController::get();
         } else if($this->method == 'POST') {
             $request_body = file_get_contents('php://input');
             if($request_body != NULL) {
                 $data = json_decode($request_body);
-                return MagazineApiController::save($data);
+                return MagazineController::save($data);
             } else {
                 throw new Exception("Wrong Request payload");
             }

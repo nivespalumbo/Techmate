@@ -22,7 +22,7 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
 
     shared.getMagazine = function (id) {
         return $filter('getById')(shared.magazines, id);
-    }
+    };
 
     shared.saveMagazine = function (m) {
         $http.post('http://127.0.0.1:8210/Techmate/api/magazine/', m)
@@ -33,17 +33,21 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
         .error(function (xhr) {
             console.log(xhr);
         });
-    }
+    };
 
-//    shared.deleteMagazine = function (m) {
-//        $http.delete('api/magazine/' + m)
-//        .success(function (data) {
-//            index = $filter('getIndexById')(shared.magazines, m);
-//            shared.magazines.splice(index, 1);
-//            shared.updateMagazines();
-//        })
-//    }
+    shared.deleteMagazine = function (id) {
+        $http.delete('http://127.0.0.1:8210/Techmate/api/magazine/' + id)
+        .success(function (data) {
+            index = $filter('getIndexById')(shared.magazines, id);
+            shared.magazines.splice(index, 1);
+            shared.updateMagazines();
+        })
+        .error(function(xhr) {
+            console.log(xhr);
+        });
+    };
 
+    // per i messaggi broadcast
     shared.notifyPropertyChanged = function (propertyName) {
         $rootScope.$broadcast(propertyName+'Changed');
     };
@@ -95,6 +99,9 @@ mySite.config(function ($routeProvider) {
         .when('/article/edit/:id', {
             controller: 'ArticleCtrl',
             templateUrl: 'views/editor_article.html'
+        })
+        .when('/pushnotifications', {
+            templateUrl: 'views/push_notifications.html'
         })
     	.otherwise({
     	    redirectTo: '/'

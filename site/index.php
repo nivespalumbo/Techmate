@@ -26,7 +26,7 @@
                     <ul class="nav navbar-nav">
                         <li><a ng-href="#">Techmate</a></li>
                         <li><a ng-href="#">Techbreak</a></li>
-                        <li><a ng-href="#">Push notifications</a></li>
+                        <li><a ng-href="#/pushnotifications">Push notifications</a></li>
                         <li><a ng-href="#">Sponsors</a></li>
                     </ul>
                     <form class="navbar-form navbar-left" role="search">
