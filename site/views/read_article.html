@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="col-lg-12">
+	<h1 class="page_header">{{article.title[language]}}<br/>
+	<small>{{article.subtitle[language]}}</small></h1>
+	
+	<div ng-bind-html="article.text[language]"></div>
+       
+    <div>
+    	<p>Date: {{article.publishDate}}</p>         
+    	<p class="text-right">Edited by <i>{{article.author}}</i></p>
+    </div>
+
+    <div>
+    	<h3>Attached images</h3>
+        <div>
+			<img ng-repeat="(id, img) in article.images" ng-src='Images/{{ img }}' class="img-responsive img-thumbnail"/>
+		</div>
+		<p ng-if="article.images.length == 0">None</p>
+    </div>
+    <div>
+    	<h3>Attached link</h3>
+        <div>
+			<ul>
+				<li ng-repeat="(key, att) in article.attachments"><a href="{{ att }}">{{ att }}</a></li>
+			</ul>
+		</div>
+		<p ng-if="article.attachments.length == 0">None</p>
+    </div>
+    <p><a ng-href="{{article.link}}">Go to article</a></p>
+    </div>
+</div>

@@ -12,4 +12,9 @@ class MagazineApiController{
             return Magazine::getAll();
         }
     }
+    
+    public static function save($m) {
+        $temp = new Magazine();
+        return $temp->save();
+    }
 }

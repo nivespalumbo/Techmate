@@ -1,0 +1,84 @@
+﻿<div id="content">
+    <h1 class="page-header">Modifica articolo</h1>
+
+    <div class="container-fluid">
+        <form novalidate class="form-horizontal" role="form">
+            <input type="hidden" ng-model="article.id" />
+            <div class="row">
+                <h4 class="sub-header">Info base</h4>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="publishDate" class="col-sm-2 control-label">Data di pubblicazione</label>
+                        <div class="col-sm-10">
+                            <input type="datetime-local" class="form-control" id="publishDate" ng-model="article.publishDate" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="author" class="col-sm-2 control-label">Autore</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="author" ng-model="article.author" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="section" class="col-sm-2 control-label">Sezione</label>
+                        <div class="col-sm-10">
+                            <select id="section" class="form-control">
+                                <option ng-repeat="s in sections" ng-selected="s==article.section">{{s}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="link" class="col-sm-2 control-label">Link all'articolo originale</label>
+                        <div class="col-sm-10">
+                            <input type="url" class="form-control" id="link" ng-model="article.link" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <h4 class="sub-header">Testi</h4>
+                <div class="form-group bg-info">
+                    <label for="language" class="col-sm-2 control-label">Seleziona lingua</label>
+                    <div class="col-sm-10">
+                        <select id="language" class="form-control" ng-model="language">
+                            <option ng-repeat="lang in allowedLanguages" ng-selected="lang==language">{{lang}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="col-sm-2 control-label">Titolo</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="title" ng-model="article.title[language]" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subtitle" class="col-sm-2 control-label">Sottotitolo</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="subtitle" ng-model="article.subtitle[language]" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="text" class="col-sm-2 control-label">Testo</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="text" ng-model="article.text[language]"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <h4 class="sub-header">Allegati</h4>
+                
+            </div>
+
+            <a href="#/" class="btn btn-default btn-lg">Annulla</a>
+            <button class="btn btn-danger btn-lg" ng-click="update()">Salva</button>
+        </form>
+    </div>
+</div>

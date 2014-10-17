@@ -42,7 +42,7 @@ class Magazine
     
     public static function get($id){
         if( file_exists("data/magazines/{$id}.txt") === false ) {
-            throw new Exception('Todo ID is invalid');
+            throw new Exception('ID is invalid');
         }
 		
         $serialized = file_get_contents("data/magazines/{$id}.txt");
@@ -64,39 +64,41 @@ class Magazine
     public static function delete($id)
     {
         if( file_exists("data/magazines/{$id}.txt") === false ) {
-            throw new Exception('Todo ID does not exist!');
+            throw new Exception('ID does not exist!');
         }
 		
         unlink("data/magazines/{$id}.txt");
         return true;
     }
 	
-    public static function save(Magazine $m)
+    public function save()
     {
         //get the array version of this todo item
-        $todo_item_array = $m->toArray();
+        $magazine_array = $this->toArray();
 		
         //save the serialized array version into a file
-        $success = file_put_contents("data/magazines/{$this->number}.txt", serialize($todo_item_array));
+        $success = file_put_contents("data/magazines/{$this->number}.txt", serialize($magazine_array));
 		
         //if saving was not successful, throw an exception
         if( $success === false ) {
-            throw new Exception('Failed to save todo item');
+            throw new Exception('Failed to save magazine');
         }
 		
         //return the array version
-        return $todo_item_array;
+        return $this;
     }
 	
     public function toArray()
     {
         //return an array version of the todo item
         return array(
-            'todo_id' => $this->todo_id,
-            'title' => $this->title,
-            'description' => $this->description,
-            'due_date' => $this->due_date,
-            'is_done' => $this->is_done
+            'number' => $this->number,
+            'cover' => $this->cover,
+            'color' => $this->color,
+            'published' => $this->published,
+            'publish_date' => $this->publish_date,
+            'abstract' => $this->abstract,
+            'content' => $this->content
         );
     }
 }

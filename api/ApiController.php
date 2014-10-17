@@ -13,6 +13,7 @@
  */
 require_once 'API.php';
 require_once 'controllers/MagazineApiController.php';
+require_once 'controllers/ArticleApiController.php';
 
 class ApiController extends API {
 
@@ -37,8 +38,16 @@ class ApiController extends API {
                 return MagazineApiController::get($this->args);
             }
             return MagazineApiController::get();
+        } else if($this->method == 'POST') {
+            return MagazineApiController::save($this->args);
+        } else if($this->method == 'PUT') {
+            return "Gestire PUT";
         } else {
-            return "Only accepts GET requests";
+            return "Gestire DELETE";
         }
+    }
+    
+    protected function article() {
+        return "Gestire ArticleController";
     }
 }

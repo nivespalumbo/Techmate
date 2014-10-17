@@ -9,7 +9,7 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.selectedLanguage = 'it';
     
     shared.getMagazines = function(){
-        $http.get("http://127.0.0.1:8210/Techmate/api/magazine")
+        $http.get('http://127.0.0.1:8210/Techmate/api/magazine')
         .success(function(data){
             shared.magazines = data;
             shared.notifyPropertyChanged('magazines');
@@ -24,16 +24,17 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
         return $filter('getById')(shared.magazines, id);
     }
 
-//    shared.saveMagazine = function (m) {
-//        $http.post('api/magazine/', m)
-//        .success(function (data) {
+    shared.saveMagazine = function (m) {
+        $http.post('http://127.0.0.1:8210/Techmate/api/magazine/', m)
+        .success(function (data) {
+            console.log(data);
 //            shared.magazines.push(data);
-//            shared.updateMagazines();
-//        })
-//        .error(function (xhr) {
-//            console.log(xhr);
-//        });
-//    }
+//            shared.notifyPropertyChanged('magazines');
+        })
+        .error(function (xhr) {
+            console.log(xhr);
+        });
+    }
 
 //    shared.deleteMagazine = function (m) {
 //        $http.delete('api/magazine/' + m)
@@ -80,6 +81,22 @@ mySite.config(function ($routeProvider) {
             controller: 'HomeCtrl',
     	    templateUrl: 'views/home.html'
     	})
+        .when('/magazine/new', {
+            controller: 'MagazineCtrl',
+            templateUrl: 'views/editor_magazine.html'
+        })
+        .when('/magazine/edit/:id', {
+            controller: 'MagazineCtrl',
+            templateUrl: 'views/editor_magazine.html'
+        })
+        .when('/article/new', {
+            controller: 'ArticleCtrl',
+            templateUrl: 'views/editor_article.html'
+        })
+        .when('/article/edit/:id', {
+            controller: 'ArticleCtrl',
+            templateUrl: 'views/editor_article.html'
+        })
     	.otherwise({
     	    redirectTo: '/'
     	});
@@ -101,4 +118,21 @@ function HomeCtrl($scope, mySharedService) {
     };
 }
 
+function MagazineCtrl ($scope, $routeParams, mySharedService) {
+     if ($routeParams.id)
+        $scope.magazine = mySharedService.getMagazine($routeParams.id);
+    else
+        $scope.magazine = {};
+    
+    $scope.save = function() {
+        mySharedService.saveMagazine($scope.magazine);
+    };
+}
+
+function ArticleCtrl ($scope, $routeParams, mySharedService) {
+
+}
+
 HomeCtrl.$inject = ['$scope', 'mySharedService'];
+MagazineCtrl.$inject = ['$scope', '$routeParams', 'mySharedService'];
+ArticleCtrl.$inject = ['$scope', '$routeParams', 'mySharedService'];
