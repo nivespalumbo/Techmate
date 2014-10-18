@@ -3,7 +3,7 @@ var mySite = angular.module('mySite', ['ngRoute']);
 mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     var shared = {};
     
-    shared.magazines = [];
+    shared.magazines = {};
     shared.languages = ['it', 'en', 'fr', 'es', 'de'];
     
     shared.selectedLanguage = 'it';
@@ -11,6 +11,7 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.getMagazines = function(){
         $http.get('http://127.0.0.1:8210/Techmate/api/magazine')
         .success(function(data){
+            console.log(data);
             shared.magazines = data;
             shared.notifyPropertyChanged('magazines');
         })
@@ -21,7 +22,7 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     };
 
     shared.getMagazine = function (id) {
-        return $filter('getById')(shared.magazines, id);
+        return shared.magazines[id];
     };
 
     shared.saveMagazine = function (m) {

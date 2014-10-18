@@ -5,6 +5,8 @@
  *
  * @author Nives
  */
+require_once 'Connection.php';
+
 class Magazine 
 {
     public $id;
@@ -19,47 +21,12 @@ class Magazine
     public function __construct() { }
     
     public static function getAll(){
-        $magazine_array = array();
-        foreach( new DirectoryIterator("data/magazines/") as $file_info ) {
-            if( $file_info->isFile() == true ) {
-                $serialized = file_get_contents($file_info->getPathname());
-                $unserialized = unserialize($serialized);
-                
-                $magazine = new Magazine();
-		$magazine->number = $unserialized['number'];
-		$magazine->cover = $unserialized['cover'];
-		$magazine->color = $unserialized['color'];
-		$magazine->published = $unserialized['published'];
-                $magazine->publish_date = $unserialized['publish_date'];
-		$magazine->abstract = $unserialized['abstract'];
-		$magazine->content = $unserialized['content'];
-                
-                $magazine_array[] = $magazine;
-            }
-        }
-
-        return $magazine_array;
+        $db = new Connection();
+        return $db->getCollection("magazines");
     }
     
     public static function get($id){
-        if( file_exists("data/magazines/{$id}.txt") === false ) {
-            throw new Exception('ID is invalid');
-        }
-		
-        $serialized = file_get_contents("data/magazines/{$id}.txt");
-        $unserialized = unserialize($serialized);
-		
-        $magazine = new Magazine();
-        $magazine->id = $unserialized['id'];
-        $magazine->number = $unserialized['number'];
-        $magazine->cover = $unserialized['cover'];
-        $magazine->color = $unserialized['color'];
-        $magazine->published = $unserialized['published'];
-        $magazine->publish_date = $unserialized['publish_date'];
-        $magazine->abstract = $unserialized['abstract'];
-        $magazine->content = $unserialized['content'];
-
-        return $magazine;
+        
     }
     
     public static function delete($id)

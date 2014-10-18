@@ -5,8 +5,8 @@
                 <li><a class="btn btn-default" ng-href="#/magazine/new">Nuovo</a></li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li ng-repeat="m in magazines" ng-style="{'background-color':'{{m.color}}'}" >
-                    <a ng-click="openDetail(m.id)">{{m.number}} - {{m.publish_date}}</a>
+                <li ng-repeat="(key, m) in magazines" ng-style="{'background-color':'{{m.color}}'}" >
+                    <a ng-click="openDetail(key)">{{m.number}} - {{m.publish_date}}</a>
                 </li>
             </ul>
         </div>
@@ -27,7 +27,7 @@
                         <div class="col-md-6 text-left"></div>
                         <div class="col-md-6 text-right">
                             <button type="button" class="btn btn-default" title='Elimina'><i class="fa fa-trash"></i></button>
-                            <a ng-href='#/magazine/edit/{{selectedMagazine.id}}' class="btn btn-default" title='Modifica'><i class="fa fa-pencil-square-o"></i></a>
+                            <a ng-href='#/magazine/edit/{{selectedMagazine._id.$id}}' class="btn btn-default" title='Modifica'><i class="fa fa-pencil-square-o"></i></a>
                             <button type="button" class="btn btn-danger">Pubblica</button>
                         </div>
                     </div>
