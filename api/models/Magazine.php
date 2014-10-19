@@ -8,12 +8,12 @@
 require_once 'Connection.php';
 
 class Magazine 
-{
-    public $id;
+{  
+    public $_id = NULL;
     public $number;
     public $cover;
     public $color;
-    public $published;
+    public $published = false;
     public $publish_date;
     public $abstract;
     public $content;
@@ -21,44 +21,55 @@ class Magazine
     public function __construct() { }
     
     public static function getAll(){
-        $db = new Connection();
-        return $db->getCollection("magazines");
+        $db = Connection::getConnection();
+        $collection = $db->magazines;
+        return iterator_to_array($collection->find());
+    }
+    
+    public static function getPublished(){
+        $db = Connection::getConnection();
+        $collection = $db->magazines;
+        return iterator_to_array($collection->find(array('published'=>true)));
     }
     
     public static function get($id){
-        
+        $db = Connection::getConnection();
+        $collection = $db->magazines;
+        return $collection->findOne(array('_id' => new MongoId($id)));
     }
     
     public static function delete($id)
     {
-        if( file_exists("data/magazines/{$id}.txt") === false ) {
-            throw new Exception('ID does not exist!');
+        $db = Connection::getConnection();
+        $collection = $db->magazines;
+        
+        try {
+            return $collection->remove(array("_id" => new MongoId($id)));
+        } catch(MongoCursorException $e) {
+            echo $e->message();
         }
-		
-        unlink("data/magazines/{$id}.txt");
-        return true;
     }
 	
     public function save()
     {
-        //get the array version of this todo item
-        $magazine_array = $this->toArray();
-		
-        //save the serialized array version into a file
-        $success = file_put_contents("data/magazines/{$this->number}.txt", serialize($magazine_array));
-		
-        //if saving was not successful, throw an exception
-        if( $success === false ) {
-            throw new Exception('Failed to save magazine');
+        $db = Connection::getConnection();
+        $collection = $db->magazines;
+        
+        try {
+            $newObject = $this->toArray();
+            $collection->update(
+                array('number' => $this->number),
+                array('$set' => $newObject),
+                array('upsert' => true)
+            );
+            return $collection->findOne(array('number' => $newObject['number']));
+
+        } catch(MongoCursorException $e) {
+            echo $e->message();
         }
-		
-        //return the array version
-        return $this;
     }
-	
-    public function toArray()
-    {
-        //return an array version of the todo item
+    
+    function toArray() {
         return array(
             'number' => $this->number,
             'cover' => $this->cover,

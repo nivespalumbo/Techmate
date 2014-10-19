@@ -23,8 +23,10 @@ class ApiController extends API {
      
     protected function magazine() {
         if ($this->method == 'GET') {
-            if(array_count_values($this->args) > 0){
-                return MagazineController::get($this->args);
+            if($this->verb == 'all') {
+                return MagazineController::getAll();
+            } else if($this->verb) {
+                return MagazineController::get($this->verb);
             }
             return MagazineController::get();
         } else if($this->method == 'POST') {
@@ -38,7 +40,10 @@ class ApiController extends API {
         } else if($this->method == 'PUT') {
             return "Gestire PUT";
         } else {
-            return "Gestire DELETE";
+            if($this->verb) {
+                return MagazineController::delete($this->verb);
+            }
+            return FALSE;
         }
     }
     

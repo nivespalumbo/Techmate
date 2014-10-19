@@ -4,13 +4,16 @@ require_once 'models/Magazine.php';
 
 class MagazineController{
     
-    public static function get(Array $args = NULL){
-        if($args && is_numeric($args[0])) {
-            return Magazine::get($args[0]);
+    public static function get($id = NULL) {
+        if ($id) {
+            return Magazine::get($id);
+        } else {
+            return Magazine::getPublished();
         }
-        else {
-            return Magazine::getAll();
-        }
+    }
+    
+    public static function getAll() {
+        return Magazine::getAll();
     }
     
     public static function save($data) {
@@ -19,5 +22,9 @@ class MagazineController{
             $m->$key = $value;
         }
         return $m->save();
+    }
+    
+    public static function delete($id){
+        return Magazine::delete($id);
     }
 }

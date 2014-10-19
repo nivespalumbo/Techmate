@@ -9,9 +9,8 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.selectedLanguage = 'it';
     
     shared.getMagazines = function(){
-        $http.get('http://127.0.0.1:8210/Techmate/api/magazine')
+        $http.get('http://127.0.0.1:8210/Techmate/api/magazine/all')
         .success(function(data){
-            console.log(data);
             shared.magazines = data;
             shared.notifyPropertyChanged('magazines');
         })
@@ -28,7 +27,11 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.saveMagazine = function (m) {
         $http.post('http://127.0.0.1:8210/Techmate/api/magazine/', m)
         .success(function (data) {
-            shared.magazines.push(data);
+            $("#box_result").html("<p>Saved</p>");
+            $("#box_result").addClass("alert-success");
+            $("#box_result").removeClass("hidden");
+            
+            shared.magazines[data._id.$id] = data;
             shared.notifyPropertyChanged('magazines');
         })
         .error(function (xhr) {
@@ -39,9 +42,9 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.deleteMagazine = function (id) {
         $http.delete('http://127.0.0.1:8210/Techmate/api/magazine/' + id)
         .success(function (data) {
-            index = $filter('getIndexById')(shared.magazines, id);
-            shared.magazines.splice(index, 1);
-            shared.updateMagazines();
+            if(data == "true")
+                delete shared.magazines[id];
+            shared.notifyPropertyChanged('magazines');
         })
         .error(function(xhr) {
             console.log(xhr);
@@ -113,7 +116,7 @@ mySite.config(function ($routeProvider) {
 function HomeCtrl($scope, mySharedService) {
     $scope.magazines = mySharedService.getMagazines();
     $scope.language = mySharedService.selectedLanguage;
-    $scope.selectedMagazine;
+    $scope.selectedId;
 
     // listener
     $scope.$on('magazinesChanged', function () {
@@ -121,7 +124,12 @@ function HomeCtrl($scope, mySharedService) {
     });
     
     $scope.openDetail = function(id){
-        $scope.selectedMagazine = mySharedService.getMagazine(id);
+        $scope.selectedId = id;
+    };
+    
+    $scope.deleteMagazine = function(id) {
+        mySharedService.deleteMagazine(id);
+        $scope.selectedId = null;
     };
 }
 
