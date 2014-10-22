@@ -24,7 +24,11 @@
                         <p>{{magazines[selectedId].content[language]}}</p>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 text-left"></div>
+                        <div class="col-md-6 text-left">
+                            <button ng-repeat="(key, value) in magazines[selectedId].abstract" class="btn btn-default">
+                                <i class="flag flag-{{key}}"></i>
+                            </button>
+                        </div>
                         <div class="col-md-6 text-right">
                             <button data-toggle="modal" data-target="#deleteMagazineDialog" type="button" class="btn btn-default" title='Elimina'><i class="fa fa-trash"></i></button>
                             <a ng-href='#/magazine/edit/{{selectedId}}' class="btn btn-default" title='Modifica'><i class="fa fa-pencil-square-o"></i></a>

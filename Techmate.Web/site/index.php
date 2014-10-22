@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         
         <link rel="stylesheet" href="style/dashboard.css">
+        <link rel="stylesheet" href="style/custom.css">
     </head>
     <body ng-app="mySite">
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">

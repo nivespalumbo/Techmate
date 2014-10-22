@@ -4,8 +4,8 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     var shared = {};
     
     shared.magazines = {};
-    shared.languages = ['it', 'en', 'fr', 'es', 'de'];
     
+    shared.languages = ['it', 'en', 'fr', 'es', 'de'];
     shared.selectedLanguage = 'it';
     
     shared.getMagazines = function(){
@@ -138,6 +138,9 @@ function MagazineCtrl ($scope, $routeParams, mySharedService) {
         $scope.magazine = mySharedService.getMagazine($routeParams.id);
     else
         $scope.magazine = {};
+    
+    $scope.allowedLanguages = mySharedService.languages;
+    $scope.language = mySharedService.selectedLanguage;
     
     $scope.save = function() {
         mySharedService.saveMagazine($scope.magazine);
