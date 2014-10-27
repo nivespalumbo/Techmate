@@ -6,7 +6,7 @@ class MagazineController{
     
     public static function get($id = NULL) {
         if ($id) {
-            return Magazine::get($id);
+            return Magazine::get(intval($id));
         } else {
             return Magazine::getPublished();
         }
@@ -29,6 +29,6 @@ class MagazineController{
     }
     
     public static function delete($id){
-        return Magazine::delete($id);
+        return Magazine::delete(intval($id));
     }
 }

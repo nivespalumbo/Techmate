@@ -41,13 +41,15 @@ class ApiController extends API {
             } else {
                 throw new Exception("Wrong Request payload");
             }
+            
         } else if($this->method == 'PUT') {
             return "Gestire PUT";
+            
         } else {
-            if($this->verb) {
-                return MagazineController::delete($this->verb);
+            if(array_count_values($this->args) > 0) {
+                return MagazineController::delete($this->args[0]);
             }
-            return FALSE;
+            throw new Exception("Undefined id");
         }
     }
     
