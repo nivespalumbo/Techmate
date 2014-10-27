@@ -3,7 +3,7 @@ var mySite = angular.module('mySite', ['ngRoute']);
 mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     var shared = {};
     
-    shared.magazines = {};
+    shared.magazines = [];
     
     shared.languages = ['it', 'en', 'fr', 'es', 'de'];
     shared.selectedLanguage = 'it';
@@ -21,29 +21,29 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     };
 
     shared.getMagazine = function (id) {
-        return shared.magazines[id];
+        return $filter('getByNumber')(shared.magazines, id);
     };
 
     shared.saveMagazine = function (m) {
         $http.post('http://127.0.0.1:8210/Techmate/api/magazine/', m)
         .success(function (data) {
-            $("#box_result").html("<p>Saved</p>");
-            $("#box_result").addClass("alert-success");
-            $("#box_result").removeClass("hidden");
-            
-            shared.magazines[data._id.$id] = data;
+            shared.magazines.push(data);
             shared.notifyPropertyChanged('magazines');
+            return true;
         })
         .error(function (xhr) {
             console.log(xhr);
+            return false;
         });
     };
 
     shared.deleteMagazine = function (id) {
         $http.delete('http://127.0.0.1:8210/Techmate/api/magazine/' + id)
         .success(function (data) {
-            if(data == "true")
-                delete shared.magazines[id];
+            if(data == "true"){
+                var index = $filter('getIndexByNumber')(shared.magazines, id);
+                shared.magazines.splice(index, 1);
+            }
             shared.notifyPropertyChanged('magazines');
         })
         .error(function(xhr) {
@@ -59,22 +59,22 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     return shared;
 });
 
-mySite.filter('getById', function () {
+mySite.filter('getByNumber', function () {
     return function (input, id) {
         var i = 0, len = input.length;
         for (; i < len; i++) {
-            if (+input[i].id == +id) {
+            if (+input[i].number == +id) {
                 return input[i];
             }
         }
         return null;
     };
 });
-mySite.filter('getIndexById', function () {
+mySite.filter('getIndexByNumber', function () {
     return function (input, id) {
         var i = 0, len = input.length;
         for (; i < len; i++) {
-            if (+input[i].id == +id) {
+            if (+input[i].number == +id) {
                 return i;
             }
         }
@@ -116,7 +116,7 @@ mySite.config(function ($routeProvider) {
 function HomeCtrl($scope, mySharedService) {
     $scope.magazines = mySharedService.getMagazines();
     $scope.language = mySharedService.selectedLanguage;
-    $scope.selectedId;
+    $scope.selected;
 
     // listener
     $scope.$on('magazinesChanged', function () {
@@ -124,12 +124,12 @@ function HomeCtrl($scope, mySharedService) {
     });
     
     $scope.openDetail = function(id){
-        $scope.selectedId = id;
+        $scope.selected = mySharedService.getMagazine(id);
     };
     
     $scope.deleteMagazine = function(id) {
         mySharedService.deleteMagazine(id);
-        $scope.selectedId = null;
+        $scope.selected = null;
     };
 }
 
@@ -143,7 +143,11 @@ function MagazineCtrl ($scope, $routeParams, mySharedService) {
     $scope.language = mySharedService.selectedLanguage;
     
     $scope.save = function() {
-        mySharedService.saveMagazine($scope.magazine);
+        if(mySharedService.saveMagazine($scope.magazine)) {
+            $("#box_result").html("<p>Saved</p>");
+            $("#box_result").addClass("alert-success");
+            $("#box_result").removeClass("hidden");
+        }
     };
 }
 

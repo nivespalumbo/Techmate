@@ -25,10 +25,12 @@ class ApiController extends API {
         if ($this->method == 'GET') {
             if($this->verb == 'all') {
                 return MagazineController::getAll();
-            } else if($this->verb) {
-                return MagazineController::get($this->verb);
+            }
+            if(array_count_values($this->args) > 0) {
+                return MagazineController::get($this->args[0]);
             }
             return MagazineController::get();
+            
         } else if($this->method == 'POST') {
             $request_body = file_get_contents('php://input');
             if($request_body != NULL) {
@@ -37,13 +39,15 @@ class ApiController extends API {
             } else {
                 throw new Exception("Wrong Request payload");
             }
+            
         } else if($this->method == 'PUT') {
             return "Gestire PUT";
+            
         } else {
-            if($this->verb) {
-                return MagazineController::delete($this->verb);
+            if(array_count_values($this->args) > 0) {
+                return MagazineController::delete($this->args[0]);
             }
-            return FALSE;
+            throw new Exception("Undefined id");
         }
     }
     

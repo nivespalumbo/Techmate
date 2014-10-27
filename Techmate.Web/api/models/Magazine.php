@@ -9,7 +9,17 @@ require_once 'Connection.php';
 
 class Magazine 
 {  
-    public $_id = NULL;
+    static $PROJECTION = array(
+        'number' => true, 
+        'cover' => true, 
+        'color' => true, 
+        'published' => true, 
+        'publish_date' => true, 
+        'abstract' => true, 
+        'content' => true, 
+        '_id' => false
+    );
+    
     public $number;
     public $cover;
     public $color;
@@ -23,28 +33,31 @@ class Magazine
     public static function getAll(){
         $db = Connection::getConnection();
         $collection = $db->magazines;
-        return iterator_to_array($collection->find());
+        
+        return iterator_to_array($collection->find(array(), Magazine::$PROJECTION), false);
     }
     
     public static function getPublished(){
         $db = Connection::getConnection();
         $collection = $db->magazines;
-        return iterator_to_array($collection->find(array('published'=>true)));
+        
+        return iterator_to_array($collection->find(array('published'=>true), Magazine::$PROJECTION), false);
     }
     
-    public static function get($id){
+    public static function get($number){
         $db = Connection::getConnection();
         $collection = $db->magazines;
-        return $collection->findOne(array('_id' => new MongoId($id)));
+        
+        return $collection->findOne(array('number' => $number), Magazine::$PROJECTION);
     }
     
-    public static function delete($id)
+    public static function delete($number)
     {
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
         try {
-            return $collection->remove(array("_id" => new MongoId($id)));
+            return $collection->remove(array("number" => $number));
         } catch(MongoCursorException $e) {
             echo $e->message();
         }
@@ -62,7 +75,7 @@ class Magazine
                 array('$set' => $newObject),
                 array('upsert' => true)
             );
-            return $collection->findOne(array('number' => $newObject['number']));
+            return $collection->findOne(array('number' => $newObject['number']), Magazine::$PROJECTION);
 
         } catch(MongoCursorException $e) {
             echo $e->message();
