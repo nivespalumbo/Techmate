@@ -23,12 +23,16 @@ class ApiController extends API {
      
     protected function magazine() {
         if ($this->method == 'GET') {
-            if($this->verb == 'all') {
-                return MagazineController::getAll();
-            } else if($this->verb) {
-                return MagazineController::get($this->verb);
+            switch ($this->verb) {
+                case 'all':
+                    return MagazineController::getAll();
+                    break;
+                case 'publish' :
+                    return MagazineController::publish($this->args[0]);
+                    break;
+                default :
+                    return MagazineController::get();
             }
-            return MagazineController::get();
         } else if($this->method == 'POST') {
             $request_body = file_get_contents('php://input');
             if($request_body != NULL) {

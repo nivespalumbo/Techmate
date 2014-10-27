@@ -49,6 +49,23 @@ class Magazine
             echo $e->message();
         }
     }
+    
+    public static function publish($number)
+    {
+        $db = Connection::getConnection();
+        $collection = $db->magazines;
+        
+        try {
+            return $collection->update(
+                array('number' => (int)$number),
+                array('$set' => array('published' => true))
+            );
+            
+        } catch(MongoCursorException $e) {
+            echo $e->message();
+        }
+        return false;
+    }
 	
     public function save()
     {

@@ -27,15 +27,13 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.saveMagazine = function (m) {
         $http.post('http://127.0.0.1:8210/Techmate/api/magazine/', m)
         .success(function (data) {
-            $("#box_result").html("<p>Saved</p>");
-            $("#box_result").addClass("alert-success");
-            $("#box_result").removeClass("hidden");
-            
             shared.magazines[data._id.$id] = data;
             shared.notifyPropertyChanged('magazines');
+            return true;
         })
         .error(function (xhr) {
             console.log(xhr);
+            return false;
         });
     };
 
@@ -50,6 +48,18 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
             console.log(xhr);
         });
     };
+    
+    shared.publish = function(id) {
+        $http.get('http://127.0.0.1:8210/Techmate/api/magazine/publish/' + shared.magazines[id].number)
+        .success(function(data) {
+            if(data == "true")
+                shared.magazines[id].published = true;
+            shared.notifyPropertyChanged('magazines');
+        })
+        .error(function(xhr) {
+            console.log(xhr);
+        });
+    }
 
     // per i messaggi broadcast
     shared.notifyPropertyChanged = function (propertyName) {
@@ -131,6 +141,10 @@ function HomeCtrl($scope, mySharedService) {
         mySharedService.deleteMagazine(id);
         $scope.selectedId = null;
     };
+    
+    $scope.publish = function() {
+        mySharedService.publish($scope.selectedId);
+    }
 }
 
 function MagazineCtrl ($scope, $routeParams, mySharedService) {
@@ -143,7 +157,15 @@ function MagazineCtrl ($scope, $routeParams, mySharedService) {
     $scope.language = mySharedService.selectedLanguage;
     
     $scope.save = function() {
-        mySharedService.saveMagazine($scope.magazine);
+        if(mySharedService.saveMagazine($scope.magazine)) {
+            $("#box_result").html("<p>Saved</p>");
+            $("#box_result").addClass("alert-success");
+            $("#box_result").removeClass("hidden");
+        } else {
+            $("#box_result").html("<p>An error occured</p>");
+            $("#box_result").addClass("alert-danger");
+            $("#box_result").removeClass("hidden");
+        }
     };
 }
 

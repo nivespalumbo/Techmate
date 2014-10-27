@@ -16,6 +16,10 @@ class MagazineController{
         return Magazine::getAll();
     }
     
+    public static function publish($number) {
+        return Magazine::publish($number);
+    }
+    
     public static function save($data) {
         $m = new Magazine();
         foreach ($data as $key => $value) {
