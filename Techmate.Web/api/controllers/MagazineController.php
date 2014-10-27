@@ -17,7 +17,7 @@ class MagazineController{
     }
     
     public static function publish($number) {
-        return Magazine::publish($number);
+        return Magazine::publish(intval($number));
     }
     
     public static function save($data) {

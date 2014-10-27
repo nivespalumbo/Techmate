@@ -34,14 +34,14 @@ class Magazine
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
-        return iterator_to_array($collection->find(array(), Magazine::$PROJECTION), false);
+        return iterator_to_array($collection->find(array(), Magazine::$PROJECTION)->sort(array('number' => 1)), false);
     }
     
     public static function getPublished(){
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
-        return iterator_to_array($collection->find(array('published'=>true), Magazine::$PROJECTION), false);
+        return iterator_to_array($collection->find(array('published'=>true), Magazine::$PROJECTION)->sort(array('number' => 1)), false);
     }
     
     public static function get($number){

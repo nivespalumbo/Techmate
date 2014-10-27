@@ -26,13 +26,15 @@ class ApiController extends API {
             switch ($this->verb) {
                 case 'all':
                     return MagazineController::getAll();
-                    break;
                 case 'publish' :
                     return MagazineController::publish($this->args[0]);
-                    break;
                 default :
-                    return MagazineController::get();
+                    if(array_count_values($this->args) > 0)
+                        return MagazineController::get ($this->args[0]);
+                    else
+                        return MagazineController::get();
             }
+            
         } else if($this->method == 'POST') {
             $request_body = file_get_contents('php://input');
             if($request_body != NULL) {
