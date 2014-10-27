@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Microsoft.Phone.Shell;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Net;
 using Techmate.WindowsPhone.Resources;
 
 namespace Techmate.WindowsPhone.ViewModels
@@ -28,7 +32,27 @@ namespace Techmate.WindowsPhone.ViewModels
         /// </summary>
         public void LoadData()
         {
-            this.IsDataLoaded = true;
+           SystemTray.ProgressIndicator = new ProgressIndicator()
+            {
+                IsIndeterminate = true,
+                IsVisible = true
+            };
+
+            WebClient webclient = new WebClient();
+            webclient.DownloadStringCompleted += (object sender, DownloadStringCompletedEventArgs e) =>
+            {
+                SystemTray.ProgressIndicator.IsVisible = false;
+
+                if (!string.IsNullOrEmpty(e.Result))
+                {
+                    Dictionary<string, MagazineViewModel> root = JsonConvert.DeserializeObject<Dictionary<string, MagazineViewModel>>(e.Result);
+                    Magazines = new ObservableCollection<MagazineViewModel>(root.Values);
+                }
+
+                this.IsDataLoaded = true;
+            };
+
+            webclient.DownloadStringAsync(new Uri("http://localhost:8210/Techmate/api/magazine"));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
