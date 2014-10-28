@@ -7,7 +7,7 @@
  */
 class Article 
 {
-    public $id;
+    public $_id;
     public $author;
     public $link;
     public $section;

@@ -7,6 +7,11 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.languages = ['it', 'en', 'fr', 'es', 'de'];
     shared.selectedLanguage = 'it';
     
+    shared.changeLanguage = function(lang) {
+        shared.selectedLanguage = lang;
+        shared.notifyPropertyChanged("selectedLanguage");
+    }
+    
     shared.getMagazines = function(){
         $http.get('http://127.0.0.1:8210/Techmate/api/magazine/all')
         .success(function(data){
@@ -106,7 +111,7 @@ mySite.config(function ($routeProvider) {
             controller: 'MagazineCtrl',
             templateUrl: 'views/editor_magazine.html'
         })
-        .when('/article/new', {
+        .when('/article/new/:idMagazine', {
             controller: 'ArticleCtrl',
             templateUrl: 'views/editor_article.html'
         })
@@ -136,6 +141,11 @@ function HomeCtrl($scope, mySharedService) {
     $scope.openDetail = function(id){
         $scope.selectedId = id;
     };
+    
+    $scope.changeLanguage = function(lang) {
+        $scope.language = lang;
+        mySharedService.changeLanguage(lang);
+    }
     
     $scope.deleteMagazine = function(id) {
         mySharedService.deleteMagazine(id);
@@ -172,7 +182,7 @@ function MagazineCtrl ($scope, $routeParams, mySharedService) {
 }
 
 function ArticleCtrl ($scope, $routeParams, mySharedService) {
-
+    $scope.idMagazine = $routeParams.idMagazine;
 }
 
 HomeCtrl.$inject = ['$scope', 'mySharedService'];

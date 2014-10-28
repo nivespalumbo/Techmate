@@ -25,14 +25,14 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 text-left">
-                            <button ng-repeat="(key, value) in magazines[selectedId].abstract" class="btn btn-default">
+                            <button ng-repeat="(key, value) in magazines[selectedId].abstract" class="btn btn-default" ng-click="changeLanguage(key)">
                                 <i class="flag flag-{{key}}"></i>
                             </button>
                         </div>
                         <div class="col-md-6 text-right">
                             <button data-toggle="modal" data-target="#deleteMagazineDialog" type="button" class="btn btn-default" title='Elimina'><i class="fa fa-trash"></i></button>
                             <a ng-href='#/magazine/edit/{{selectedId}}' class="btn btn-default" title='Modifica'><i class="fa fa-pencil-square-o"></i></a>
-                            <button type="button" class="btn btn-danger">Pubblica</button>
+                            <button data-toggle="modal" data-target="#publishMagazineDialog" type="button" class="btn btn-danger">Pubblica</button>
                         </div>
                     </div>
                 </div>
@@ -54,6 +54,76 @@
                         </div>
                     </div>
                 </div> <!-- End Modal -->
+                <!-- Modal -->
+                <div class="modal fade" id="publishMagazineDialog" tabindex="-1" role="dialog" aria-labelledby="lbPublishMagazine" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="lbPublishMagazine">Pubblicazione Techmate</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Pubblicare il magazine selezionato?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="publish(selectedId)">Pubblica</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Modal -->
+            </div>
+            
+            <div class="row">
+                <h2 class="sub-header">Articoli<a href="#/article/new/{{selectedId}}" class='btn btn-default btn-md pull-right' title='Add article'><i class="fa fa-plus"></i> Aggiungi un articolo</a></h2>
+                
+<!--                <div ng-repeat="a in articles">
+                    <div class="row article">
+                        <div class="col-md-12">
+                            <h3>{{ a.showOrder }}
+                                {{ a.title[language] }}<br />
+                                <small> {{ a.subtitle[language] }}</small>
+                            </h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="article_text" ng-bind-html="a.text[language]"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <div>
+                                    <img ng-repeat="(id, img) in a.images" ng-src='Images/{{ img }}' style='max-height: 100px; max-width: 100px; margin: 3px;' />
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li ng-repeat="(key, att) in a.attachments"><a href="{{ att }}">{{ att }}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <p>{{ a.section }}</p>
+                                <p><a href='{{ a.link }}'>Link to the original article</a></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Date: <b>{{ a.publishDate }}</b></p>
+                                <p>Edited by <i>{{ a.author }}</i></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img ng-repeat="lang in a.allowedLanguages" ng-src="Content/icons/{{ lang }}.png" />
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <button data-toggle="modal" data-target="#deleteArticleDialog" class='btn btn-default btn-lg' title='Delete article'><span class='glyphicon glyphicon-trash'></span></button>
+                                <a ng-href="#editArticle/{{a.id}}" class='btn btn-default btn-lg' title='Edit article'><span class='glyphicon glyphicon-pencil'></span></a>
+                                <a ng-href="#read/{{a.id}}" class='btn btn-default btn-lg' title='Read'><span class='glyphicon glyphicon-eye-open'></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
             </div>
         </div>
     </div>
