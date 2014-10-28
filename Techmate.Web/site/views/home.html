@@ -1,37 +1,37 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-3 col-md-2 sidebar" role="navigation">
             <ul class="nav nav-sidebar">
                 <li><a ng-href="#/magazine/new"><b>Nuovo</b></a></li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li ng-repeat="m in magazines" ng-style="{'background-color':'{{m.color}}'}" >
-                    <a ng-click="openDetail(m.number)">{{m.number}} - {{m.publish_date}}</a>
+                <li ng-repeat="(key, m) in magazines" ng-style="{'background-color':m.color}" >
+                    <a ng-click="openDetail(key)">{{m.number}} - {{m.publish_date}}</a>
                 </li>
             </ul>
         </div>
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="selected">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="selectedId">
             <div class="page-header">
-                <h1>{{selected.number}} <small>{{selected.publish_date}}</small></h1>
+                <h1>{{magazines[selectedId].number}} <small>{{magazines[selectedId].publish_date}}</small></h1>
             </div>
             <div class="jumbotron">
                 <div class="row">
                     <div class="col-md-12">
                         <h3>Abstract:</h3>
-                        <p>{{selected.abstract[language]}}</p>
+                        <p>{{magazines[selectedId].abstract[language]}}</p>
                         <h3>Content:</h3>
-                        <p>{{selected.content[language]}}</p>
+                        <p>{{magazines[selectedId].content[language]}}</p>
                     </div>
                     <div class="row">
                         <div class="col-md-6 text-left">
-                            <button ng-repeat="(key, value) in selected.abstract" class="btn btn-default">
+                            <button ng-repeat="(key, value) in magazines[selectedId].abstract" class="btn btn-default">
                                 <i class="flag flag-{{key}}"></i>
                             </button>
                         </div>
                         <div class="col-md-6 text-right">
                             <button data-toggle="modal" data-target="#deleteMagazineDialog" type="button" class="btn btn-default" title='Elimina'><i class="fa fa-trash"></i></button>
-                            <a ng-href='#/magazine/edit/{{selected.number}}' class="btn btn-default" title='Modifica'><i class="fa fa-pencil-square-o"></i></a>
+                            <a ng-href='#/magazine/edit/{{selectedId}}' class="btn btn-default" title='Modifica'><i class="fa fa-pencil-square-o"></i></a>
                             <button type="button" class="btn btn-danger">Pubblica</button>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Annulla</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteMagazine(selected.number)">Elimina</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteMagazine(selectedId)">Elimina</button>
                             </div>
                         </div>
                     </div>

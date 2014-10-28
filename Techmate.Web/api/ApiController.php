@@ -29,8 +29,8 @@ class ApiController extends API {
                 case 'publish' :
                     return MagazineController::publish($this->args[0]);
                 default :
-                    if(array_count_values($this->args) > 0)
-                        return MagazineController::get ($this->args[0]);
+                    if($this->verb)
+                        return MagazineController::get($this->verb);
                     else
                         return MagazineController::get();
             }
@@ -48,8 +48,8 @@ class ApiController extends API {
             return "Gestire PUT";
             
         } else {
-            if(array_count_values($this->args) > 0) {
-                return MagazineController::delete($this->args[0]);
+            if($this->verb) {
+                return MagazineController::delete($this->verb);
             }
             throw new Exception("Undefined id");
         }

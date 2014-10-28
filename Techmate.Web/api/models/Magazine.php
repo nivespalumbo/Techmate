@@ -17,9 +17,10 @@ class Magazine
         'publish_date' => true, 
         'abstract' => true, 
         'content' => true, 
-        '_id' => false
+        '_id' => true
     );
     
+    public $_id;
     public $number;
     public $cover;
     public $color;
@@ -34,43 +35,43 @@ class Magazine
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
-        return iterator_to_array($collection->find(array(), Magazine::$PROJECTION)->sort(array('number' => 1)), false);
+        return iterator_to_array($collection->find(array(), Magazine::$PROJECTION)->sort(array('number' => 1)));
     }
     
     public static function getPublished(){
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
-        return iterator_to_array($collection->find(array('published'=>true), Magazine::$PROJECTION)->sort(array('number' => 1)), false);
+        return iterator_to_array($collection->find(array('published'=>true), Magazine::$PROJECTION)->sort(array('number' => 1)));
     }
     
-    public static function get($number){
+    public static function get($id){
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
-        return $collection->findOne(array('number' => $number), Magazine::$PROJECTION);
+        return $collection->findOne(array('_id' => new MongoId($id)), Magazine::$PROJECTION);
     }
     
-    public static function delete($number)
+    public static function delete($id)
     {
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
         try {
-            return $collection->remove(array("number" => $number));
+            return $collection->remove(array("_id" => new MongoId($id)));
         } catch(MongoCursorException $e) {
             echo $e->message();
         }
     }
     
-    public static function publish($number)
+    public static function publish($id)
     {
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
         try {
             return $collection->update(
-                array('number' => (int)$number),
+                array('_id' => new MongoId($id)),
                 array('$set' => array('published' => true))
             );
             
