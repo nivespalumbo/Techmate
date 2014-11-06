@@ -20,15 +20,3 @@ and open the template in the editor.
 .flag-en {
     content: url("en.png");
 }
-
-.flag-fr {
-    content: url("fr.png");
-}
-
-.flag-es {
-    content: url("es.png");
-}
-
-.flag-de {
-    content: url("de.png");
-}

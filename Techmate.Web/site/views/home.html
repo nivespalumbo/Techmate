@@ -6,14 +6,19 @@
             </ul>
             <ul class="nav nav-sidebar">
                 <li ng-repeat="(key, m) in magazines" ng-style="{'background-color':m.color}" >
-                    <a ng-click="openDetail(key)">{{m.number}} - {{m.publish_date}}</a>
+                    <a href="" ng-click="openDetail(key)">{{m.number}} - {{m.publish_date}}</a>
                 </li>
             </ul>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="selectedId">
-            <div class="page-header">
-                <h1>{{magazines[selectedId].number}} <small>{{magazines[selectedId].publish_date}}</small></h1>
+            <div class="row">
+                <div class="page-header col-md-6">
+                    <h1>{{magazines[selectedId].number}} <small>{{magazines[selectedId].publish_date}}</small></h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button type="button" ng-repeat="l in languages" ng-click="changeLanguage(l)" class="btn btn-default">{{l}}</button>
+                </div>
             </div>
             <div class="jumbotron">
                 <div class="row">
@@ -24,12 +29,7 @@
                         <p>{{magazines[selectedId].content[language]}}</p>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 text-left">
-                            <button ng-repeat="(key, value) in magazines[selectedId].abstract" class="btn btn-default" ng-click="changeLanguage(key)">
-                                <i class="flag flag-{{key}}"></i>
-                            </button>
-                        </div>
-                        <div class="col-md-6 text-right">
+                        <div class="col-md-12 text-right">
                             <button data-toggle="modal" data-target="#deleteMagazineDialog" type="button" class="btn btn-default" title='Elimina'><i class="fa fa-trash"></i></button>
                             <a ng-href='#/magazine/edit/{{selectedId}}' class="btn btn-default" title='Modifica'><i class="fa fa-pencil-square-o"></i></a>
                             <button data-toggle="modal" data-target="#publishMagazineDialog" type="button" class="btn btn-danger">Pubblica</button>

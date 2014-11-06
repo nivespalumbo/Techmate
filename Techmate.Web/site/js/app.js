@@ -4,7 +4,7 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     var shared = {};
     
     shared.magazines = {};
-    shared.languages = ['it', 'en', 'fr', 'es', 'de'];
+    shared.languages = ['it', 'en'];
     shared.selectedLanguage = 'it';
     
     shared.changeLanguage = function(lang) {
@@ -131,6 +131,7 @@ mySite.config(function ($routeProvider) {
 function HomeCtrl($scope, mySharedService) {
     $scope.magazines = mySharedService.getMagazines();
     $scope.language = mySharedService.selectedLanguage;
+    $scope.languages = mySharedService.languages;
     $scope.selectedId;
 
     // listener
