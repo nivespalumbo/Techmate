@@ -29,7 +29,7 @@ abstract class API
      * Property: file
      * Stores the input of the PUT request
      */
-     protected $file = Null;
+     protected $file = NULL;
 
     /**
      * Constructor: __construct

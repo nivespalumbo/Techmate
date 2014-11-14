@@ -1,6 +1,6 @@
 var mySite = angular.module('mySite', ['ngRoute']);
 
-mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
+mySite.factory('mySharedService', function ($rootScope, $http) {
     var shared = {};
     
     shared.magazines = {};
@@ -10,17 +10,22 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.changeLanguage = function(lang) {
         shared.selectedLanguage = lang;
         shared.notifyPropertyChanged("selectedLanguage");
-    }
+    };
     
     shared.getMagazines = function(){
-        $http.get('http://127.0.0.1:8210/Techmate/api/magazine/all')
+        $http.get('http://localhost:8210/Techmate/api/magazine/all')
         .success(function(data){
-            shared.magazines = data;
-            shared.notifyPropertyChanged('magazines');
+            if (angular.isArray(data)) {
+                data.forEach(function(m) {
+                    shared.magazines[m.number] = m;
+                });
+                shared.notifyPropertyChanged('magazines');
+            }
         })
         .error(function(xhr){
             console.log(xhr);
         });
+        
     	return shared.magazines;
     };
 
@@ -29,9 +34,9 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     };
 
     shared.saveMagazine = function (m, callback) {
-        $http.post('http://127.0.0.1:8210/Techmate/api/magazine/', m)
+        $http.post('http://localhost:8210/Techmate/api/magazine/', m)
         .success(function (data) {
-            shared.magazines[data._id.$id] = data;
+            shared.magazines[data.number] = data;
             shared.notifyPropertyChanged('magazines');
             callback(true);
         })
@@ -42,7 +47,7 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     };
 
     shared.deleteMagazine = function (id) {
-        $http.delete('http://127.0.0.1:8210/Techmate/api/magazine/' + id)
+        $http.delete('http://localhost:8210/Techmate/api/magazine/' + id)
         .success(function (data) {
             if(data == "true")
                 delete shared.magazines[id];
@@ -55,7 +60,7 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     };
     
     shared.publish = function(id) {
-        $http.get('http://127.0.0.1:8210/Techmate/api/magazine/publish/' + id)
+        $http.get('http://localhost:8210/Techmate/api/magazine/publish/' + id)
         .success(function(data) {
             if(data == "true")
                 shared.magazines[id].published = true;
@@ -132,7 +137,7 @@ function HomeCtrl($scope, mySharedService) {
     $scope.magazines = mySharedService.getMagazines();
     $scope.language = mySharedService.selectedLanguage;
     $scope.languages = mySharedService.languages;
-    $scope.selectedId;
+    $scope.selectedId = null;
 
     // listener
     $scope.$on('magazinesChanged', function () {

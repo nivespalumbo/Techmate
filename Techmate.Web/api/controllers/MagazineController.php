@@ -2,11 +2,11 @@
 
 require_once 'models/Magazine.php';
 
-class MagazineController{
+class MagazineController {
     
-    public static function get($id = NULL) {
-        if ($id) {
-            return Magazine::get($id);
+    public static function get($number = NULL) {
+        if ($number) {
+            return Magazine::get(intval($number));
         } else {
             return Magazine::getPublished();
         }
@@ -16,8 +16,8 @@ class MagazineController{
         return Magazine::getAll();
     }
     
-    public static function publish($id) {
-        return Magazine::publish($id);
+    public static function publish($number) {
+        return Magazine::publish(intval($number));
     }
     
     public static function save($data) {
@@ -28,7 +28,7 @@ class MagazineController{
         return $m->save();
     }
     
-    public static function delete($id){
-        return Magazine::delete($id);
+    public static function delete($number){
+        return Magazine::delete(intval($number));
     }
 }

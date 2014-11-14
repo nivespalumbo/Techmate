@@ -17,10 +17,9 @@ class Magazine
         'publish_date' => true, 
         'abstract' => true, 
         'content' => true, 
-        '_id' => true
+        '_id' => false
     );
     
-    public $_id;
     public $number;
     public $cover;
     public $color;
@@ -45,33 +44,33 @@ class Magazine
         return iterator_to_array($collection->find(array('published'=>true), Magazine::$PROJECTION)->sort(array('number' => 1)));
     }
     
-    public static function get($id){
+    public static function get($number){
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
-        return $collection->findOne(array('_id' => new MongoId($id)), Magazine::$PROJECTION);
+        return $collection->findOne(array('number' => $number), Magazine::$PROJECTION);
     }
     
-    public static function delete($id)
+    public static function delete($number)
     {
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
         try {
-            return $collection->remove(array("_id" => new MongoId($id)));
+            return $collection->remove(array("number" => $number));
         } catch(MongoCursorException $e) {
             echo $e->message();
         }
     }
     
-    public static function publish($id)
+    public static function publish($number)
     {
         $db = Connection::getConnection();
         $collection = $db->magazines;
         
         try {
             return $collection->update(
-                array('_id' => new MongoId($id)),
+                array('number' => $number),
                 array('$set' => array('published' => true))
             );
             
@@ -89,7 +88,7 @@ class Magazine
         try {
             $newObject = $this->toArray();
             $collection->update(
-                array('number' => $this->number),
+                array('number' => intval($this->number)),
                 array('$set' => $newObject),
                 array('upsert' => true)
             );
