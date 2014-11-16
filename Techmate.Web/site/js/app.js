@@ -1,6 +1,6 @@
 var mySite = angular.module('mySite', ['ngRoute']);
 
-mySite.factory('mySharedService', function ($rootScope, $http) {
+mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     var shared = {};
     
     shared.magazines = {};
@@ -88,13 +88,23 @@ mySite.factory('mySharedService', function ($rootScope, $http) {
             return shared.articles[idMagazine];
     };
     
+    shared.getArticle = function(idMagazine, idArticle) {
+        return $filter('findByNumber')(shared.articles[idMagazine], idArticle);
+    };
+    
     shared.saveArticle = function (a, callback) {
         $http.post('http://localhost:8210/Techmate/api/article/', a)
         .success(function (data) {
             console.log(data);
             if(!(data.magazine in shared.articles))
                 shared.articles[data.magazine] = [];
-            shared.articles[data.magazine].push(data);
+            
+            var i = $filter('findIndexByNumber')(shared.articles[data.magazine], data.number);
+            if(i)
+                shared.articles[data.magazine][i] = data;
+            else
+                shared.articles[data.magazine].push(data);
+            
             shared.notifyPropertyChanged('articles');
             callback(true);
         })
@@ -104,19 +114,6 @@ mySite.factory('mySharedService', function ($rootScope, $http) {
         });
     };
 
-//    shared.deleteMagazine = function (idMagazine, idArticle) {
-//        $http.delete('http://localhost:8210/Techmate/api/article/' + idArticle + "/" + idMagazine)
-//        .success(function (data) {
-//            if(data == "true")
-//                delete shared.articlesmagazines[id];
-//            
-//            shared.notifyPropertyChanged('magazines');
-//        })
-//        .error(function(xhr) {
-//            console.log(xhr);
-//        });
-//    };
-
     // per i messaggi broadcast
     shared.notifyPropertyChanged = function (propertyName) {
         $rootScope.$broadcast(propertyName+'Changed');
@@ -125,28 +122,29 @@ mySite.factory('mySharedService', function ($rootScope, $http) {
     return shared;
 });
 
-//mySite.filter('getByNumber', function () {
-//    return function (input, id) {
-//        var i = 0, len = input.length;
-//        for (; i < len; i++) {
-//            if (+input[i].number == +id) {
-//                return input[i];
-//            }
-//        }
-//        return null;
-//    };
-//});
-//mySite.filter('getIndexByNumber', function () {
-//    return function (input, id) {
-//        var i = 0, len = input.length;
-//        for (; i < len; i++) {
-//            if (+input[i].number == +id) {
-//                return i;
-//            }
-//        }
-//        return null;
-//    };
-//});
+mySite.filter('findByNumber', function () {
+    return function (input, number) {
+        var i = 0, len = input.length;
+        for (; i < len; i++) {
+            if (+input[i].number == +number) {
+                return input[i];
+            }
+        }
+        return null;
+    };
+});
+
+mySite.filter('findIndexByNumber', function () {
+    return function (input, number) {
+        var i = 0, len = input.length;
+        for (; i < len; i++) {
+            if (+input[i].number == +number) {
+                return i;
+            }
+        }
+        return null;
+    };
+});
 
 mySite.config(function ($routeProvider) {
     $routeProvider
@@ -241,7 +239,10 @@ function MagazineCtrl ($scope, $routeParams, mySharedService) {
 }
 
 function ArticleCtrl ($scope, $routeParams, mySharedService) {
-    $scope.article;
+    if($routeParams.id)
+        $scope.article = mySharedService.getArticle($routeParams.idMagazine, $routeParams.id);
+    else
+        $scope.article = {};
     
     $scope.allowedLanguages = mySharedService.languages;
     $scope.language = mySharedService.selectedLanguage;
