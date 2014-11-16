@@ -77,10 +77,10 @@
             <div class="row">
                 <h2 class="sub-header">Articoli<a href="#/article/new/{{selectedId}}" class='btn btn-default btn-md pull-right' title='Add article'><i class="fa fa-plus"></i> Aggiungi un articolo</a></h2>
                 
-<!--                <div ng-repeat="a in articles">
+                <div ng-repeat="a in articles">
                     <div class="row article">
                         <div class="col-md-12">
-                            <h3>{{ a.showOrder }}
+                            <h3>{{ a.number }}
                                 {{ a.title[language] }}<br />
                                 <small> {{ a.subtitle[language] }}</small>
                             </h3>
@@ -91,11 +91,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div>
-                                    <img ng-repeat="(id, img) in a.images" ng-src='Images/{{ img }}' style='max-height: 100px; max-width: 100px; margin: 3px;' />
+                                    <img ng-repeat="img in a.images" ng-src='Images/{{ img }}' style='max-height: 100px; max-width: 100px; margin: 3px;' />
                                 </div>
                                 <div>
                                     <ul>
-                                        <li ng-repeat="(key, att) in a.attachments"><a href="{{ att }}">{{ att }}</a></li>
+                                        <li ng-repeat="att in a.attachments"><a href="{{ att }}">{{ att }}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -108,22 +108,18 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <p>Date: <b>{{ a.publishDate }}</b></p>
                                 <p>Edited by <i>{{ a.author }}</i></p>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <img ng-repeat="lang in a.allowedLanguages" ng-src="Content/icons/{{ lang }}.png" />
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <button data-toggle="modal" data-target="#deleteArticleDialog" class='btn btn-default btn-lg' title='Delete article'><span class='glyphicon glyphicon-trash'></span></button>
-                                <a ng-href="#editArticle/{{a.id}}" class='btn btn-default btn-lg' title='Edit article'><span class='glyphicon glyphicon-pencil'></span></a>
-                                <a ng-href="#read/{{a.id}}" class='btn btn-default btn-lg' title='Read'><span class='glyphicon glyphicon-eye-open'></span></a>
+                            <div class="col-md-12 text-right">
+                                <!--<button data-toggle="modal" data-target="#deleteArticleDialog" class='btn btn-default btn-lg' title='Delete article'><span class='glyphicon glyphicon-trash'></span></button>-->
+                                <a ng-href="#article/edit/{{a.magazine}}/{{a.number}}" class='btn btn-default' title='Edit article'><span class='fa fa-pencil-square-o'></span></a>
+                                <!--<a ng-href="#read/{{a.id}}" class='btn btn-default btn-lg' title='Read'><span class='glyphicon glyphicon-eye-open'></span></a>-->
                             </div>
                         </div>
                     </div>
-                </div>-->
+                </div>
             </div>
         </div>
     </div>

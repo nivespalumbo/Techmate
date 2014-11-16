@@ -5,9 +5,11 @@
  *
  * @author Nives
  */
+require_once 'Connection.php';
+
 class Article 
 {
-    static $PROJECTION = array(
+    private static $PROJECTION = array(
         'number' => true,
         'author' => true,
         'link' => true,
@@ -35,24 +37,48 @@ class Article
     public function __construct() { }
     
     public static function get($idMagazine) {
+        $db = Connection::getConnection();
+        $collection = $db->articles;
         
+        return iterator_to_array($collection->find(array('magazine'=>$idMagazine), Article::$PROJECTION)->sort(array('number' => 1)));
     }
     
     public function save() {
+        $db = Connection::getConnection();
+        $collection = $db->articles;
         
+        try {
+            $newObject = $this->toArray();
+            $collection->update(
+                array('number' => $newObject['number'], 'magazine' => $newObject['magazine']),
+                array('$set' => $newObject),
+                array('upsert' => true)
+            );
+            return $collection->findOne(array('number' => $newObject['number'], 'magazine' => $newObject['magazine']), Article::$PROJECTION);
+
+        } catch(MongoCursorException $e) {
+            echo $e->message();
+        }
     }
     
     public static function delete($numberArticle, $idMagazine) {
+        $db = Connection::getConnection();
+        $collection = $db->articles;
         
+        try {
+            return $collection->remove(array("number" => $numberArticle, 'magazine' => $idMagazine));
+        } catch(MongoCursorException $e) {
+            echo $e->message();
+        }
     }
     
     function toArray() {
         return array(
-            'number' => $this->number,
+            'number' => intval($this->number),
             'author' => $this->author,
             'link' => $this->link,
             'section' => $this->section,
-            'magazine' => $this->magazine,
+            'magazine' => intval($this->magazine),
             'title' => $this->title,
             'subtitle' => $this->subtitle,
             'text' => $this->text,

@@ -1,5 +1,7 @@
 <?php
 
+require_once 'models/Article.php';
+
 class ArticleController {
     public static function get($idMagazine) {
         return Article::get(intval($idMagazine));

@@ -9,7 +9,7 @@ require_once 'Connection.php';
 
 class Magazine 
 {  
-    static $PROJECTION = array(
+    private static $PROJECTION = array(
         'number' => true, 
         'cover' => true, 
         'color' => true, 
@@ -88,7 +88,7 @@ class Magazine
         try {
             $newObject = $this->toArray();
             $collection->update(
-                array('number' => intval($this->number)),
+                array('number' => $newObject['number']),
                 array('$set' => $newObject),
                 array('upsert' => true)
             );
@@ -101,10 +101,10 @@ class Magazine
     
     function toArray() {
         return array(
-            'number' => $this->number,
+            'number' => intval($this->number),
             'cover' => $this->cover,
             'color' => $this->color,
-            'published' => $this->published,
+            'published' => boolval($this->published),
             'publish_date' => $this->publish_date,
             'abstract' => $this->abstract,
             'content' => $this->content

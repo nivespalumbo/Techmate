@@ -4,6 +4,7 @@ mySite.factory('mySharedService', function ($rootScope, $http) {
     var shared = {};
     
     shared.magazines = {};
+    shared.articles = {};
     shared.languages = ['it', 'en'];
     shared.selectedLanguage = 'it';
     
@@ -69,7 +70,52 @@ mySite.factory('mySharedService', function ($rootScope, $http) {
         .error(function(xhr) {
             console.log(xhr);
         });
-    }
+    };
+    
+    shared.getArticles = function(idMagazine){
+        if(!(idMagazine in shared.articles)){
+            $http.get('http://localhost:8210/Techmate/api/article/' + idMagazine)
+            .success(function(data){
+                if (angular.isArray(data)) {
+                    shared.articles[idMagazine] = data;
+                    shared.notifyPropertyChanged('articles');
+                }
+            })
+            .error(function(xhr){
+                console.log(xhr);
+            });
+        } else 
+            return shared.articles[idMagazine];
+    };
+    
+    shared.saveArticle = function (a, callback) {
+        $http.post('http://localhost:8210/Techmate/api/article/', a)
+        .success(function (data) {
+            console.log(data);
+            if(!(data.magazine in shared.articles))
+                shared.articles[data.magazine] = [];
+            shared.articles[data.magazine].push(data);
+            shared.notifyPropertyChanged('articles');
+            callback(true);
+        })
+        .error(function (xhr) {
+            console.log(xhr);
+            callback(false);
+        });
+    };
+
+//    shared.deleteMagazine = function (idMagazine, idArticle) {
+//        $http.delete('http://localhost:8210/Techmate/api/article/' + idArticle + "/" + idMagazine)
+//        .success(function (data) {
+//            if(data == "true")
+//                delete shared.articlesmagazines[id];
+//            
+//            shared.notifyPropertyChanged('magazines');
+//        })
+//        .error(function(xhr) {
+//            console.log(xhr);
+//        });
+//    };
 
     // per i messaggi broadcast
     shared.notifyPropertyChanged = function (propertyName) {
@@ -79,28 +125,28 @@ mySite.factory('mySharedService', function ($rootScope, $http) {
     return shared;
 });
 
-mySite.filter('getByNumber', function () {
-    return function (input, id) {
-        var i = 0, len = input.length;
-        for (; i < len; i++) {
-            if (+input[i].number == +id) {
-                return input[i];
-            }
-        }
-        return null;
-    };
-});
-mySite.filter('getIndexByNumber', function () {
-    return function (input, id) {
-        var i = 0, len = input.length;
-        for (; i < len; i++) {
-            if (+input[i].number == +id) {
-                return i;
-            }
-        }
-        return null;
-    };
-});
+//mySite.filter('getByNumber', function () {
+//    return function (input, id) {
+//        var i = 0, len = input.length;
+//        for (; i < len; i++) {
+//            if (+input[i].number == +id) {
+//                return input[i];
+//            }
+//        }
+//        return null;
+//    };
+//});
+//mySite.filter('getIndexByNumber', function () {
+//    return function (input, id) {
+//        var i = 0, len = input.length;
+//        for (; i < len; i++) {
+//            if (+input[i].number == +id) {
+//                return i;
+//            }
+//        }
+//        return null;
+//    };
+//});
 
 mySite.config(function ($routeProvider) {
     $routeProvider
@@ -120,7 +166,7 @@ mySite.config(function ($routeProvider) {
             controller: 'ArticleCtrl',
             templateUrl: 'views/editor_article.html'
         })
-        .when('/article/edit/:id', {
+        .when('/article/edit/:idMagazine/:id', {
             controller: 'ArticleCtrl',
             templateUrl: 'views/editor_article.html'
         })
@@ -137,21 +183,28 @@ function HomeCtrl($scope, mySharedService) {
     $scope.magazines = mySharedService.getMagazines();
     $scope.language = mySharedService.selectedLanguage;
     $scope.languages = mySharedService.languages;
+    
     $scope.selectedId = null;
+    $scope.articles = null;
 
     // listener
     $scope.$on('magazinesChanged', function () {
         $scope.magazines = mySharedService.magazines;
     });
+    $scope.$on('articlesChanged', function () {
+        if($scope.selectedId in mySharedService.articles)
+            $scope.articles = mySharedService.articles[$scope.selectedId];
+    });
     
     $scope.openDetail = function(id){
         $scope.selectedId = id;
+        $scope.articles = mySharedService.getArticles(id);
     };
     
     $scope.changeLanguage = function(lang) {
         $scope.language = lang;
         mySharedService.changeLanguage(lang);
-    }
+    };
     
     $scope.deleteMagazine = function(id) {
         mySharedService.deleteMagazine(id);
@@ -160,7 +213,7 @@ function HomeCtrl($scope, mySharedService) {
     
     $scope.publish = function() {
         mySharedService.publish($scope.selectedId);
-    }
+    };
 }
 
 function MagazineCtrl ($scope, $routeParams, mySharedService) {
@@ -188,7 +241,25 @@ function MagazineCtrl ($scope, $routeParams, mySharedService) {
 }
 
 function ArticleCtrl ($scope, $routeParams, mySharedService) {
-    $scope.idMagazine = $routeParams.idMagazine;
+    $scope.article;
+    
+    $scope.allowedLanguages = mySharedService.languages;
+    $scope.language = mySharedService.selectedLanguage;
+    
+    $scope.save = function() {
+        $scope.article.magazine = $routeParams.idMagazine;
+        mySharedService.saveArticle($scope.article, function(result) {
+            if(result) {
+                $("#box_result").html("<p>Saved</p>");
+                $("#box_result").addClass("alert-success");
+                $("#box_result").removeClass("hidden");
+            } else {
+                $("#box_result").html("<p>An error occured</p>");
+                $("#box_result").addClass("alert-danger");
+                $("#box_result").removeClass("hidden");
+            }
+        });
+    };
 }
 
 HomeCtrl.$inject = ['$scope', 'mySharedService'];
