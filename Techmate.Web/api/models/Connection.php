@@ -13,7 +13,7 @@ class Connection {
         if (self::$db === null)
         {
             try {
-                $m = new Mongo("mongodb://site:admin@ds035260.mongolab.com:35260/techmate");
+                $m = new MongoClient("mongodb://site:admin@ds035260.mongolab.com:35260/techmate");
             } catch (MongoConnectionException $e) {
                 die('Failed to connect to MongoDB '.$e->getMessage());
             }
