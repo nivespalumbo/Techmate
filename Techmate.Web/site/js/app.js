@@ -21,6 +21,8 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
                     shared.magazines[m.number] = m;
                 });
                 shared.notifyPropertyChanged('magazines');
+            } else {
+                console.log(data);
             }
         })
         .error(function(xhr){
@@ -79,6 +81,8 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
                 if (angular.isArray(data)) {
                     shared.articles[idMagazine] = data;
                     shared.notifyPropertyChanged('articles');
+                } else {
+                    console.log(data);
                 }
             })
             .error(function(xhr){
