@@ -1,4 +1,4 @@
-var mySite = angular.module('mySite', ['ngRoute']);
+var mySite = angular.module('mySite', ['ngRoute', 'ngSanitize']);
 
 mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     var shared = {};
@@ -270,3 +270,27 @@ function ArticleCtrl ($scope, $routeParams, mySharedService) {
 HomeCtrl.$inject = ['$scope', 'mySharedService'];
 MagazineCtrl.$inject = ['$scope', '$routeParams', 'mySharedService'];
 ArticleCtrl.$inject = ['$scope', '$routeParams', 'mySharedService'];
+
+mySite.directive('ckeditor', function() {
+    return {
+        require : '?ngModel',
+        link : function($scope, elm, attr, ngModel) {
+
+            var ck = CKEDITOR.replace(elm[0]);
+
+            ck.on('instanceReady', function() {
+                ck.setData(ngModel.$viewValue);
+            });
+
+            ck.on('pasteState', function() {
+                $scope.$apply(function() {
+                    ngModel.$setViewValue(ck.getData());
+                });
+            });
+
+            ngModel.$render = function(value) {
+                ck.setData(ngModel.$modelValue);
+            };
+        }
+    };
+});
