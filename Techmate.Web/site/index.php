@@ -38,6 +38,9 @@
                             </div>
                         </div>
                     </form>
+                    <div class="nav navbar-right" ng-controller="LanguageCtrl">
+                        <button type="button" ng-repeat="l in languages" ng-click="changeLanguage(l)" class="btn btn-default navbar-btn" >{{l}}</button>
+                    </div>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </div>

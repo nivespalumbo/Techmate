@@ -184,7 +184,6 @@ mySite.config(function ($routeProvider) {
 function HomeCtrl($scope, mySharedService) {
     $scope.magazines = mySharedService.getMagazines();
     $scope.language = mySharedService.selectedLanguage;
-    $scope.languages = mySharedService.languages;
     
     $scope.selectedId = null;
     $scope.articles = null;
@@ -197,15 +196,13 @@ function HomeCtrl($scope, mySharedService) {
         if($scope.selectedId in mySharedService.articles)
             $scope.articles = mySharedService.articles[$scope.selectedId];
     });
+    $scope.$on('selectedLanguageChanged', function () {
+        $scope.language = mySharedService.selectedLanguage;
+    });
     
     $scope.openDetail = function(id){
         $scope.selectedId = id;
         $scope.articles = mySharedService.getArticles(id);
-    };
-    
-    $scope.changeLanguage = function(lang) {
-        $scope.language = lang;
-        mySharedService.changeLanguage(lang);
     };
     
     $scope.deleteMagazine = function(id) {
@@ -264,6 +261,14 @@ function ArticleCtrl ($scope, $routeParams, mySharedService) {
                 $("#box_result").removeClass("hidden");
             }
         });
+    };
+}
+
+function LanguageCtrl ($scope, mySharedService) {
+    $scope.languages = mySharedService.languages;
+    
+    $scope.changeLanguage = function(lang) {
+        mySharedService.changeLanguage(lang);
     };
 }
 
