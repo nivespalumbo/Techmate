@@ -16,8 +16,8 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     shared.getMagazines = function(){
         $http.get('http://localhost:8210/Techmate/api/magazine/all')
         .success(function(data){
-            if (angular.isArray(data)) {
-                data.forEach(function(m) {
+            if (angular.isArray(data.Response)) {
+                data.Response.forEach(function(m) {
                     shared.magazines[m.number] = m;
                 });
                 shared.notifyPropertyChanged('magazines');
@@ -78,8 +78,8 @@ mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
         if(!(idMagazine in shared.articles)){
             $http.get('http://localhost:8210/Techmate/api/article/' + idMagazine)
             .success(function(data){
-                if (angular.isArray(data)) {
-                    shared.articles[idMagazine] = data;
+                if (angular.isArray(data.Response)) {
+                    shared.articles[idMagazine] = data.Response;
                     shared.notifyPropertyChanged('articles');
                 } else {
                     console.log(data);

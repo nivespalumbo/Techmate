@@ -33,7 +33,7 @@ class Magazine
     public static function getAll(){
         $db = Connection::getConnection();
         $collection = $db->magazines;
-        
+
         return iterator_to_array($collection->find(array(), Magazine::$PROJECTION)->sort(array('number' => 1)));
     }
     

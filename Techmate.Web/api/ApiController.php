@@ -30,8 +30,9 @@ class ApiController extends API {
                     case 'publish' :
                         return MagazineController::publish($this->args[0]);
                     default :
-                        if(array_count_values($this->args) > 0)
-                            return MagazineController::get($this->args[0]);
+//                        if(array_count_values($this->args) > 0) {
+//                            return MagazineController::get($this->args[0]);
+//                        }
                         return MagazineController::get();
                 }
                 break;
