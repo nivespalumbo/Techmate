@@ -8,29 +8,27 @@ namespace Techmate.DataModel
 {
     public class Article
     {
-        public Article(string number, string author, string link, string section, string mag, string title, string subtitle, string text, string[] images, string[] attach)
+        public Article(int number, string author, string link, string section, string title, string subtitle, string text)
         {
             Number = number;
             Author = author;
             Link = link;
             Section = section;
-            Magazine = mag;
             Title = title;
             Subtitle = subtitle;
             Text = text;
-            Images = images;
-            Attachments = attach;
+            Images = new List<string>();
+            Attachments = new List<string>();
         }
 
-        public string Number { get; private set; }
+        public int Number { get; private set; }
         public string Author { get; private set; }
         public string Link { get; private set; }
         public string Section { get; private set; }
-        public string Magazine { get; private set; }
         public string Title { get; private set; }
         public string Subtitle { get; private set; }
         public string Text { get; private set; }
-        public string[] Images { get; private set; }
-        public string[] Attachments { get; private set; }
+        public IEnumerable<string> Images { get; private set; }
+        public IEnumerable<string> Attachments { get; private set; }
     }
 }

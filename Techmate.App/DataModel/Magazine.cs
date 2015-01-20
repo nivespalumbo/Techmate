@@ -4,14 +4,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Techmate.Common;
 
 namespace Techmate.DataModel
 {
     public class Magazine
     {
-        public Magazine(int num, string cover, string color, string theabstract, string publishDate, string content)
+        public Magazine(int number, string cover, string color, string theabstract, string publishDate, string content)
         {
-            Number = num;
+            Number = number;
             Cover = cover;
             Color = color;
             PublishDate = publishDate;

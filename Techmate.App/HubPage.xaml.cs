@@ -66,6 +66,8 @@ namespace Techmate
             // TODO: creare un modello dati appropriato per il dominio problematico per sostituire i dati di esempio
             var sampleDataGroups = await TechmateDataSource.GetMagazinesAsync();
             DefaultViewModel["Magazines"] = sampleDataGroups;
+            var youtubeData = await YouTubeDataSource.LoadDataAsync();
+            DefaultViewModel["Techbreaks"] = youtubeData;
         }
 
         /// <summary>

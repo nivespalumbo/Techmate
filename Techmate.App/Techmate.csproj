@@ -88,10 +88,9 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="DataModel\Article.cs" />
     <Compile Include="DataModel\Magazine.cs" />
-    <Compile Include="DataModel\TechmateSampleDataSource.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="DataModel\Techbreak.cs" />
     <Compile Include="DataModel\TechmateDataSource.cs" />
+    <Compile Include="DataModel\YouTubeDataSource.cs" />
     <Compile Include="HubPage.xaml.cs">
       <DependentUpon>HubPage.xaml</DependentUpon>
     </Compile>
@@ -128,7 +127,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataModel\TechmateSample.json" />
+    <Content Include="DataModel\TechmateSample.json" />
     <PRIResource Include="Strings\it-IT\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +143,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

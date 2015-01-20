@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Data.Json;
+using Windows.Storage;
+using Newtonsoft.Json;
 
 namespace Techmate.DataModel
 {
-    class TechmateDataSource
+    public class TechmateDataSource
     {
         private static TechmateDataSource _dataSource = new TechmateDataSource();
 
@@ -26,24 +29,33 @@ namespace Techmate.DataModel
             return _dataSource.Magazines;
         }
 
-        public static async Task<Magazine> GetMagazineAsync(string uniqueId)
+        public static async Task<Magazine> GetMagazineAsync(int uniqueId)
         {
-            throw new NotImplementedException("GetMagazineAsync");
-            //await _dataSource.GetSampleDataAsync();
-            //// La semplice ricerca lineare è accettabile per piccoli set di dati
-            //var matches = _dataSource.Groups.Where((group) => group.Number.Equals(uniqueId));
-            //if (matches.Count() == 1) return matches.First();
-            //return null;
+            await _dataSource.GetMagazineListAsync();
+
+            // La semplice ricerca lineare è accettabile per piccoli set di dati
+            var matches = _dataSource.Magazines.Where((group) => group.Number == uniqueId);
+            if (matches.Count() == 1) return matches.First();
+            return null;
         }
 
-        public static async Task<Article> GetArticleAsync(string uniqueId)
+        public static async Task<IEnumerable<Article>> GetArticlesAsync(int uniqueId)
         {
-            throw new NotImplementedException("GetArticleAsync");
-            //await _dataSource.GetSampleDataAsync();
-            //// La semplice ricerca lineare è accettabile per piccoli set di dati
-            //var matches = _dataSource.Groups.SelectMany(group => group.Articles).Where((item) => item.Number.Equals(uniqueId));
-            //if (matches.Count() == 1) return matches.First();
-            //return null;
+            await _dataSource.GetArticlesOfMagazine(uniqueId);
+
+            var mag = _dataSource.Magazines.First(m => m.Number == uniqueId);
+            if (mag != null) return mag.Articles;
+            return null;
+        }
+
+        public static async Task<Article> GetArticleAsync(int magazineUniqueId, int articleUniqueId)
+        {
+            await _dataSource.GetArticlesOfMagazine(magazineUniqueId);
+
+            // La semplice ricerca lineare è accettabile per piccoli set di dati
+            var matches = _dataSource.Magazines.SelectMany(group => group.Articles).Where((item) => item.Number == articleUniqueId);
+            if (matches.Count() == 1) return matches.First();
+            return null;
         }
 
         private async Task GetMagazineListAsync()
@@ -51,37 +63,107 @@ namespace Techmate.DataModel
             if (_magazines.Count != 0)
                 return;
 
+#if !DEBUG
             Uri dataUri = new Uri("http://127.0.0.1/Techmate/api/magazine");
 
             HttpClient httpClient = new HttpClient();
-            string response =
+            string jsonText =
                 await httpClient.GetStringAsync(dataUri);
+#else
+            Uri dataUri = new Uri("ms-appx:///DataModel/TechmateSample.json");
 
-            JsonObject jsonObject = JsonObject.Parse(response);
-            JsonArray jsonArray = jsonObject["Response"].GetArray();
+            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(dataUri);
+            string jsonText = await FileIO.ReadTextAsync(file);
+#endif
 
-            foreach (JsonValue groupValue in jsonArray)
-            {
-                JsonObject groupObject = groupValue.GetObject();
-                Magazine group = new Magazine((int)groupObject["number"].GetNumber(),
-                                              groupObject["cover"].GetString(),
-                                              groupObject["color"].GetString(),
-                                              groupObject["abstract"].GetString(),
-                                              groupObject["publish_date"].GetString(),
-                                              groupObject["content"].GetString());
-
-                //foreach (JsonValue itemValue in groupObject["Items"].GetArray())
-                //{
-                //    JsonObject itemObject = itemValue.GetObject();
-                //    group.Articles.Add(new Article(itemObject["UniqueId"].GetString(),
-                //                                       itemObject["Title"].GetString(),
-                //                                       itemObject["Subtitle"].GetString(),
-                //                                       itemObject["ImagePath"].GetString(),
-                //                                       itemObject["Description"].GetString(),
-                //                                       itemObject["Content"].GetString()));
-                //}
-                Magazines.Add(group);
-            }
+            _magazines = JsonConvert.DeserializeObject<ObservableCollection<Magazine>>(jsonText);
         }
+
+        private Task GetArticlesOfMagazine(int uniqueId)
+        {
+            throw new NotImplementedException("GetArticlesOfMagazine");
+        }
+
+//#else
+
+//        private async Task GetMagazineListAsync()
+//        {
+//            if (_magazines.Count != 0)
+//                return;
+
+//            Uri dataUri = new Uri("ms-appx:///DataModel/TechmateSample.json");
+
+//            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(dataUri);
+//            string jsonText = await FileIO.ReadTextAsync(file);
+//            JsonObject jsonObject = JsonObject.Parse(jsonText);
+//            JsonArray jsonArray = jsonObject["Magazines"].GetArray();
+
+//            foreach (JsonValue groupValue in jsonArray)
+//            {
+//                JsonObject groupObject = groupValue.GetObject();
+//                Magazine group = new Magazine((int)groupObject["Number"].GetNumber(),
+//                                                            groupObject["Cover"].GetString(),
+//                                                            groupObject["Color"].GetString(),
+//                                                            groupObject["Abstract"].GetString(),
+//                                                            groupObject["PublishDate"].GetString(),
+//                                                            groupObject["Content"].GetString());
+
+                
+//                foreach (JsonValue itemValue in groupObject["Articles"].GetArray())
+//                {
+//                    JsonObject itemObject = itemValue.GetObject();
+//                    group.Articles.Add(new Article((int) itemObject["Number"].GetNumber(),
+//                        itemObject["Author"].GetString(),
+//                        itemObject["Link"].GetString(),
+//                        itemObject["Section"].GetString(),
+//                        itemObject["Title"].GetString(),
+//                        itemObject["Subtitle"].GetString(),
+//                        itemObject["Text"].GetString()));
+//                }
+                
+//                Magazines.Add(group);
+//            }
+//        }
+
+//        private async Task GetArticlesOfMagazine(int uniqueId)
+//        {
+//            var mag = await GetMagazineAsync(uniqueId);
+//            if (mag == null)
+//                return;
+
+//            Uri dataUri = new Uri("ms-appx:///DataModel/TechmateSample.json");
+
+//            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(dataUri);
+//            string jsonText = await FileIO.ReadTextAsync(file);
+//            JsonObject jsonObject = JsonObject.Parse(jsonText);
+//            JsonArray jsonArray = jsonObject["Magazines"].GetArray();
+
+//            foreach (JsonValue groupValue in jsonArray)
+//            {
+//                JsonObject groupObject = groupValue.GetObject();
+//                Magazine group = new Magazine((int)groupObject["Number"].GetNumber(),
+//                                                            groupObject["Cover"].GetString(),
+//                                                            groupObject["Color"].GetString(),
+//                                                            groupObject["Abstract"].GetString(),
+//                                                            groupObject["PublishDate"].GetString(),
+//                                                            groupObject["Content"].GetString());
+
+
+//                foreach (JsonValue itemValue in groupObject["Articles"].GetArray())
+//                {
+//                    JsonObject itemObject = itemValue.GetObject();
+//                    group.Articles.Add(new Article((int)itemObject["Number"].GetNumber(),
+//                        itemObject["Author"].GetString(),
+//                        itemObject["Link"].GetString(),
+//                        itemObject["Section"].GetString(),
+//                        itemObject["Title"].GetString(),
+//                        itemObject["Subtitle"].GetString(),
+//                        itemObject["Text"].GetString()));
+//                }
+
+//                Magazines.Add(group);
+//            }
+//        }
+
     }
 }

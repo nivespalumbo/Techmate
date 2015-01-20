@@ -1,397 +1,192 @@
-﻿{
-    "Magazines": [
+﻿[
         {
-            "Abstract": "Il computer si fa piccolo, ci segue ovunque e cambia il modo di usare la rete, vivere e lavorare. Come si adattano le aziende?",
-            "Color": "#00c2ff",
-            "Content": "- BYOD: tecnologie personalizzate\n- Il Tablet in azienda\n- Internet attraverso il mobile",
-            "Cover": null,
             "Number": 0,
-            "PublishDate": "2012-06",
-            "Published": true,
+            "Cover": "http://www.techmate.it/techmate_mobile_app/cover/cover_0.jpg",
+            "Color": "#00c2ff",
+            "PublishDate": "Giugno 2012",
+            "Abstract": "Il computer si fa piccolo, ci segue ovunque e cambia il modo di usare la rete, vivere e lavorare. Come si adattano le aziende?",
+            "Content": "In questo numero:\r\n\r\n- BYOD: tecnologie personalizzate\r\n- Il Tablet in azienda\r\n- Internet attraverso il mobile",
             "Articles": [
                 {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 0,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
                     "Number": 1,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
+                    "Title": "Anche il marketing influenzato dalla diffusione di Internet e mobile",
+                    "Subtitle": "Sempre più efficace la pubblicità ",
+                    "Text": "<p>Sempre pi&ugrave; efficace la pubblicit&agrave; &quot;digitale&quot;, ma c&#39;&egrave; il rischio d&#39;infastidire l&#39;utente</p><p>Sull&#39;onda del sempre maggiore accesso a Internet e ai contenuti che offre, anche le aziende investono cifre sempre pi&ugrave; cospicue nella pubblicit&agrave; online. Sviluppato in diverse forme, dai banner agli adv sui motori di ricerca, il marketing online si conferma, infatti, strategia vincente per raggiungere un numero elevato di utenti. Affinch&eacute; sia efficace, va per&ograve; programmata con attenzione.</p><p>In questo contesto anche gli investimenti in pubblicit&agrave; cambiano volto. L&#39;investimento nel digital marketing da parte delle aziende italiane &egrave; cresciuto del 50% nel 2011, raggiungendo il 5% degli investimenti, per un valore di 56 milioni di euro. Questi i dati che emergono da un&#39;analisi del Politecnico di Milano. Tra gli strumenti pi&ugrave; utilizzati dalle aziende, i banner all&#39;interno di applicazioni e mobile site (display advertising) e quelli legati a specifiche parole chiave sui motori di ricerca (keyword advertising), con una crescita a tre cifre rispetto al 2010. Questi strumenti, infatti, invogliano gli utenti a scaricare la app aziendale sul proprio smartphone, e consentono di ottenere una buona visibilit&agrave;, completamente trasparente in termini di efficacia, grazie alla tracciabilit&agrave; di click e download. Il tutto con costi contenuti.</p><p>A dimostrazione del successo di queste nuove forme di promozione, il crescente interesse da parte di aziende e imprese, tra le quali spiccano quelle appartenenti ai settori automotive, finanza e intrattenimento.</p><p>Sfruttare, quindi, questa strategia di marketing &egrave; un&#39;ottima opportunit&agrave; per le aziende, ma necessita di una particolare attenzione. Risulta da alcune ricerche, infatti, che &#39;bombardare&#39; eccessivamente gli utenti mobile con annunci pubblicitari diminuisce notevolmente l&#39;efficacia degli stessi. Il mobile marketing costituisce, perci&ograve;, uno strumento vincente, ma dev&#39;essere sostenuto da precise analisi qualitative, che permettano di creare una connessione realmente efficace con l&#39;utente, attraverso la creazione del messaggio giusto, che sia soprattutto veicolato attraverso canali selezionati in base al target di riferimento.</p>",
+                    "Images": null,
                     "Attachments": null,
                     "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
+                    "Link": "http://www.techmate.it/?p=247",
+                    "Section": "Osservatorio"
+                },
+                {
                     "Number": 2,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
+                    "Title": "Tecnologie sempre più personalizzate, dispositivi sempre più sincronizzati: è il BYOD",
+                    "Subtitle": "Un unico dispositivo a casa e sul lavoro: è questo il futuro per aziende e lavoratori",
+                    "Text": "<p><strong>Un unico dispositivo a casa e sul lavoro: &egrave; questo il futuro per aziende e lavoratori</strong></p><p>Aumentare la produttivit&agrave; aziendale permettendo ai dipendenti di utilizzare il proprio dispositivo personale nello svolgimento delle loro attivit&agrave; lavorative. &Egrave; la filosofia del BYOD (Bring Your Own Device), un sistema sempre pi&ugrave; diffuso a livello mondiale e in rapida crescita anche in Italia. L&#39;utilizzo delle tecnologie in ambito d&#39;impresa &egrave; infatti ormai largamente diffuso e la strategia vincente, per amministratori e lavoratori, &egrave; saper sfruttare in sinergia i miglioramenti che queste comportano in ambito sia lavorativo che personale, unendone i vantaggi.</p><p>I dati sono significativi. Secondo lo studio &quot;Consumerization in IT&quot;, condotto dall&#39;Institute for High Performance di Accenture, su un campione di 4.000 dipendenti e 300 dirigenti aziendali e IT, in 16 paesi di cinque continenti, il 45% dei dipendenti intervistati dichiara che i dispositivi e le applicazioni software personali sono pi&ugrave; utili degli strumenti forniti dal reparto IT aziendale. Inoltre, un dipendente su quattro (23%) utilizza regolarmente dispositivi e applicazioni consumer personali per svolgere attivit&agrave; correlate al lavoro. Infine, pi&ugrave; di un quarto (27%) ha dichiarato che pagherebbe, per usare dispositivi e applicazioni personali al lavoro. Le aziende che si opporranno a questo processo rischieranno di perdere importanti vantaggi competitivi, legati soprattutto a un reale aumento della produttivit&agrave;.</p><p>Una ricerca condotta da Avanade, infatti, ha messo in rilievo il fatto che l&#39;utilizzo dei dispositivi personali non si limiti all&#39;accesso all&#39;e-mail (85% nel mondo, 82% in Italia) e ai social network (46% nel mondo, 52% in Italia), ma coinvolga l&#39;accesso ai CRM &#39; Customer relationship management (45% nel mondo, 48% in Italia) e agli ERP &#39; Enterprise Resource Planning (38% nel mondo, 63% in Italia). I CIO &#39; chief information officer dovranno, quindi, promuovere un adattamento dei processi e delle piattaforme aziendali per favorire questo andamento (supporto ad un parco molto eterogeneo di dispositivi e di applicazione per gli stessi, accesso/interfacciamento alle applicazioni core aziendali, etc.), fronteggiando aspetti critici, come la gestione delle identit&agrave;, la sicurezza interna delle applicazioni e dei dati. Ancora dati, a sostegno di quanto asserito. Secondo un&#39;indagine condotta da Loudhouse (Londra), su un campione di 2.245 dipendenti di aziende (con pi&ugrave; di 5.000 dipendenti), in 10 paesi europei (in Italia sono state effettuate 300 interviste), solo un&#39;azienda su tre ha definito policy aziendali ad hoc. Comunque, molte aziende consentono l&#39;accesso a tablet e smartphone ad aree riservate contenenti informazioni strategiche come database (32%), Crm (17%), dati finanziari (11%) e documenti di strategie e pianificazione (11%). Si consideri, per&ograve;, le criticit&agrave; evidenziate da questa indagine. Il 70% del campione non assicura un supporto attraverso le strutture IT e solo il 40% ha definito policy di sicurezza adeguate. Per non citare il fatto che il 25% degli intervistati non &egrave; a conoscenza delle misure da adottare a livello utente per proteggere al meglio il proprio dispositivo.</p>",
+                    "Images": null,
                     "Attachments": null,
                     "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
+                    "Link": "http://www.techmate.it/?p=217",
+                    "Section": "Osservatorio"
+                },
+                {
                     "Number": 3,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
+                    "Title": "Vetture & Mobile: binomio nell'allestimento e nel marketing",
+                    "Subtitle": "Sempre più di rilievo il ruolo ricoperto da dispositivi e tecnologie nella progettazione automotive.",
+                    "Text": "<p>Sempre pi&ugrave; di rilievo il ruolo ricoperto da dispositivi e tecnologie nella progettazione automotive.</p><p>Il Mobile e l&#39;automotive sempre pi&ugrave; interconnessi. Non solo in termini di allestimento, dove dominano ormai le pi&ugrave; avanzate innovazioni informatiche. L&#39;approccio al Mobile &egrave; infatti sempre pi&ugrave; orientato al marketing: dispositivi, tecnologie e strumenti web vengono utilizzati molto spesso dalle case automobilistiche non solo per attrarre i potenziali clienti, ma anche come veri e propri veicolatori promozionali delle vetture.</p><p>Il settore Automotive &egrave; sempre pi&ugrave; legato al Mobile, e non solo in termini di allestimento delle vetture. Smartphone, tablet e relative applicazioni vengono infatti utilizzati in modo sempre maggiore, come veicolo pubblicitario e promozionale di grande effetto, perch&eacute; permettono una totale personalizzazione e un coinvolgimento diretto del potenziale cliente.</p><p>Sono svariati, quindi, gli esempi che mostrano come, oggi, le pi&ugrave; grandi case automobilistiche investano una percentuale crescente del proprio budget destinato alla pubblicit&agrave; nella creazione di App, diminuendo, ad esempio, l&#39;investimento sulle testate a pagamento (con un calo di quest&#39;ultimo del 27,9%, secondo dati Nielsen).</p><p><strong>Citroen e Renault</strong></p><p>Molto spesso inoltre, grazie a questi strumenti, &egrave; il consumatore stesso che diventa promotore del marchio: hanno sfruttato questo paradigma Citroen e Renault con la predisposizione di due configuratori Web, grazie ai quali l&#39;utente pu&ograve; accessoriare la propria vettura come preferisce, condividendola poi su Facebook e mostrando, quindi, le peculiarit&agrave; del veicolo ai propri contatti.</p><p><strong>BMW e Mercedes Benz</strong></p><p>Puntano a conquistare l&#39;interesse del cliente incuriosendolo con tante particolarit&agrave; e novit&agrave;: Mercedes, ad esempio, permette di navigare col proprio smartphone tra 64 vetture storiche presenti all&#39;interno del Museo Daimler-Benz, mentre BMW consente di ricevere in diretta le novit&agrave; sul mondo BMW o di poter prenotare una prova su strada di un nuovo veicolo, il tutto comodamente dal proprio tablet.</p><p><strong>Fiat e Renault</strong></p><p>Vi sono, poi, le aziende che sfruttano le App per fidelizzare i propri clienti, fornendo servizi aggiuntivi a seguito dell&#39;acquisto del veicolo: ne &egrave; un esempio &#39;Ciao Fiat Mobile&#39;, l&#39;applicazione del Gruppo Fiat, che permette di organizzare in modo dettagliato tutte le scadenze per la corretta manutenzione del proprio veicolo, o ancora &#39;RS monitor App&#39; di Renault, che permette di conoscere in diretta i dati sulla propria performance di guida.</p><p><strong>Ford</strong></p><p>Segnaliamo, infine, che la Ford, &egrave; stata la prima azienda del settore auto a partecipare al Mobile Word Congress di febbraio 2012, confermando la sempre maggiore correlazione tra questi due settori: Mobile e Automotive.</p>",
+                    "Images": null,
                     "Attachments": null,
                     "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
+                    "Link": "http://www.techmate.it/?p=250",
+                    "Section": "Focus"
+                },
+                {
                     "Number": 4,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
+                    "Title": "Il tablet, ovvero l'essenza del BYOD",
+                    "Subtitle": "Uno strumento per ottimizzare le risorse, a vantaggio di imprese e utenti.",
+                    "Text": "<p>Uno strumento per ottimizzare le risorse, a vantaggio di imprese e utenti.</p><p>Parlando di BYOD &nbsp;non si pu&ograve; non citare il tablet, dispositivo che oggi viene maggiormente identificato con questa nuova filosofia.</p><p>Uno strumento versatile, che permette di avere in versione Mobile tutti i contenuti necessari, dall&#39;ambito personale a quello lavorativo, con un significativo risparmio di risorse e, grazie alle sempre meno stampe effettuate, anche un sempre maggiore rispetto per l&#39;ambiente.</p><p>Da un&#39;analisi effettuata da Trend Micro e condotta dall&#39;Istituto Loudhouse emerge chiaramente il crescente interesse in Italia del BYOD, ovvero il Bring Your Own Device. Con questo termine si intende l&#39;utilizzo di un unico dispositivo, in questo caso il tablet, sia nel contesto lavorativo che in quello famigliare: un grande vantaggio per l&#39;utente, che ha cos&igrave; sempre a disposizione ogni documento o contatto senza dover ricorrere a diversi strumenti, e al tempo stesso un vantaggio per le imprese.</p><p>Significativo il dato italiano emerso dall&#39;indagine: il 59% delle imprese italiane consente infatti ai propri dipendenti di utilizzare le tecnologie mobili personali in attivit&agrave; lavorative. Una percentuale importante, se si considera che solo l&#39;Olanda presenta un dato pi&ugrave; alto, con il 67%. In Italia, per il 69% del campione intervistato i dispositivi sono forniti dall&#39;azienda, mentre per il restante 30% sono scelti e acquistati dal dipendente. Diverse le aspettative delle aziende: il 48% dei casi si aspetta, in seguito alla diffusione del BYOD, un incremento della produttivit&agrave;, e una riduzione dei costi nel 40%.</p><p>E il punto di vista dei lavoratori?</p><p>Il 55% ritiene che il beneficio dell&#39;avere sempre a disposizione un unico dispositivo sia la comodit&agrave;, poi ancora la possibilit&agrave; di lavorare in remoto da casa (48%) e i poter avere un solo strumento per attivit&agrave; lavorative e personali (40%). Quindi, grazie al BYOD e all&#39;utilizzo di tablet in azienda si aprono nuove frontiere di sempre maggiore rispetto dell&#39;ambiente e di ottimizzazione delle risorse a disposizione.</p>",
+                    "Images": null,
                     "Attachments": null,
                     "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
+                    "Link": "http://www.techmate.it/?p=223",
+                    "Section": "Osservatorio"
+                },
+                {
                     "Number": 5,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
+                    "Title": "2020: 24 miliardi di dispostivi connessi nel mondo",
+                    "Subtitle": "Nell'ultimo trimestre del 2011 le vendite di iPhone sono passate da 17 a 35 milioni.",
+                    "Text": "<p>Nell&#39;ultimo trimestre del 2011 le vendite di iPhone sono passate da 17 a 35 milioni.<br />Cresce esponenzialmente il numero di dispositivi nel mondo. Dall&#39;iPhone all&#39;iPad, fino alle tecnologie Android, &egrave; vasta la scelta per gli utenti del &#39;new mobile&#39;</p><p>Entro il 2020 saranno oltre 24 miliardi i dispositivi connessi nel mondo. E&#39; il dato fornito dalla GSMA, l&#39;associazione mondiale di operatori di telefonia mobile, la met&agrave; dei quali sar&agrave; costituita proprio da dispositivi &#39;mobile&#39;. Un dato che fa riflettere i responsabili di marketing e comunicazione delle aziende.</p><p>Un esempio su tutti: le stime di un Paese come l&#39;India prevedono, nel prossimo anno, altri 200 milioni di nuovi abbonati al &#39;new mobile&#39;, arrivando cos&igrave; a 898 milioni di utilizzatori. Oggi, quello che impressiona &egrave; il grande risultato raggiunto nell&#39;ultimo trimestre del 2011 dalle vendite di iPhone: passati da 17 a 35 milioni. Anche l&#39;iPad cresce, raggiungendo per la prima volta l&#39;iPhone in termini di unit&agrave; vendute.</p><p>Guardando per&ograve; ad altri dati, emerge un quadro interessante sul fronte del binomio Apple/Android. Crescono le quote di mercato di Apple, ma Android resta leader, con una crescita di 3,5 punti rispetto all&#39; 1,7 di Apple. Google fa anche sapere che i dispositivi mobili con sistema operativo Android hanno superato i trecento milioni. Il successo, per&ograve;, non &egrave; soltanto del sistema operativo, ma anche dell&#39;ecosistema applicativo che conta oggi quasi 500 mila applicazioni disponibili. Con un numero triplicato in un anno, le applicazioni di Android concorrono, in termini di download, con quelle di Apple. Ci sono anche attese per un prossimo lancio di un tablet a marchio Google, ma la soluzione pi&ugrave; probabile &egrave; che si preferisca un&#39;azione di pervasivit&agrave; di Android su piattaforme di produttori diversi.</p>",
+                    "Images": null,
                     "Attachments": null,
                     "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
+                    "Link": "http://www.techmate.it/?p=253",
+                    "Section": "Piattaforme"
+                },
+                {
                     "Number": 6,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
+                    "Title": "IT Consumerization BYOD - Tendenze, Criticità e Soluzioni",
+                    "Subtitle": "Sempre più aziende adeguano il proprio settore IT",
+                    "Text": "<p><strong>Sempre pi&ugrave; aziende adeguano il proprio settore IT</strong></p><p>Le aziende che gi&agrave; dispongono da tempo di strumenti di Software Management sono oggi obbligate ad integrare l?esistente con i nuovi strumenti MDM e MAM per poter garantire sicurezza e compliance alle policy aziendali anche per i nuovi dispositivi mobili.</p><p>Secondo una ricerca commissionata da Avanade a livello mondiale, per comprendere le attuali tendenze in atto rispetto al fenomeno della Consumerizzazione IT/BYOD, 8 (9 in Italia) aziende su 10 permettono ai propri collaboratori l&#39;utilizzo dei propri dispositivi personali nell&#39;espletamento di attivit&agrave; aziendali; 6 su 10, inoltre, stanno adeguando il proprio settore IT per supportare i nuovi dispositivi, tra cui, i pi&ugrave; utilizzati sono i tablet Android, gli smartphone blackberry e i notebook Apple.</p><p>Le decisioni e le problematiche che il settore IT si trova ad affrontare, riguardano quale policy BYOD adottare, ovvero, che dispositivi ammettere, come controllarli, quali dati aziendali rendere accessibili, con che misure di sicurezza. A tal scopo, non possono mancare strumenti per il <strong>Mobile Device Management (MDM)</strong> e il <strong>Mobile Application Management (MAM)</strong>, che permettono di attivare, configurare, e monitorare i dispositivi, nonch&eacute; di aggiornare, gestire, e effettuare un tracking delle operazione compiute dall&#39;utilizzatore.</p><p>I parametri per valutare le possibilit&agrave; offerte da detti strumenti dovrebbero essere:</p><p>- la possibilit&agrave; di identificare le applicazioni in base alla loro tipologia per un push sugli utenti che le devono utilizzare</p><p>- la gestione degli utenti, dei dati identificativi per l&#39;accesso e dei privilegi associati</p><p>-&nbsp;la possibilit&agrave; di monitorarne lo stato per una gestione facilitata di aggiornamenti e interventi di supporto e servizio.</p><p>Le aziende devono tenere conto di almeno tre aspetti:</p><p>- l&#39;utente vuole continuare a poter installare applicazioni di sua scelta sul dispositivo usato anche per il lavoro e si attende che l&#39;IT lo permetta e faccia fronte ai rischi associati;</p><p>-&nbsp;l&#39;utente vuole essere libero di scegliersi il suo dispositivo mobile;</p><p>- l&#39;azienda deve poter bloccare accessi e utilizzi di applicazioni e dati aziendali quando un dipendente lascia l&#39;azienda.</p>",
+                    "Images": null,
                     "Attachments": null,
                     "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
+                    "Link": "http://www.techmate.it/?p=227",
+                    "Section": "Focus"
+                },
+                {
                     "Number": 7,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
+                    "Title": "I pagamenti con il Mobile sempre più diffusi",
+                    "Subtitle": "Nell'arco di otto anni i pagamenti avverranno attraverso piattaforme di Mobile Payment",
+                    "Text": "<p>Nell&#39;arco di otto anni i pagamenti avverranno attraverso piattaforme di Mobile Payment</p><p>Alcune statistiche prevedono un incremento del 405% entro il 2016 nel numero di consumatori che usano dispositivi mobile per trasferire denaro. Il cellulare, inoltre, &nbsp;&egrave; visto sempre di pi&ugrave; come un dispositivo per semplificare e velocizzare le modalit&agrave; di pagamento.</p><p>Con Mobile Payment si possono intendere diversi modelli di pagamento, dipendentemente dall&#39;accezione di riferimento.</p><p>Il cellulare pu&ograve; essere visto come una carta di credito (modello Mobility Proximity Payment), pu&ograve; essere utilizzato per pagare da remoto, tramite SMS o App (modello Mobile Remote Payment), oppure pu&ograve; essere utilizzato per gestire l&#39;intero processo di scelta/acquisto/pagamento (modello Mobile Commerce), cos&igrave; come per trasferire denaro (Mobile Money Transfer).</p><p>Secondo Pew study, il mondo potrebbe essere molto differente da oggi, nell&#39;arco di soli 8 anni: pagamenti in contanti e con carta di credito sparirebbero, soppiantati da piattaforme di Mobile Payment, che semplificheranno e velocizzeranno le modalit&agrave; con cui paghiamo. Qualche dato riferito al 2011, tratti dalla survey citata. Un americano su 10 ha effettuato una donazione via SMS; pi&ugrave; di un terzo di possessori di smartphone ha acceduto a servizi di online banking legati ai pagamenti; il 46% delle app acquistate (quindi pagate) dagli utilizzatori sarebbe avvenuto via mobile.</p><p>Secondo Juniper Research, il numero di consumatori che usano dispositivi mobile per trasferire denaro, raggiunger&agrave; i 340 milioni entro il 2016. Ci&ograve; rappresenterebbe un incremento del 405%, rispetto al 2011, ove si registrava un parco di 84 milioni di attori coinvolti. Nello stesso anno, la media del trasferimento &egrave; stata di 22 dollari. Il report evidenzia, infine, come alcuni aspetti da risolvere accelererebbero l&#39;utilizzo e l&#39;adozione di tale paradigma. Parliamo di interoperabilit&agrave; e di accesso al servizio a destinatari (di trasferimenti) non registrati, situazione non permessa dagli attuali provider.</p><p>Di fronte a tali numeri, non stupisce certo la nascita di prodotti e soluzioni legati al Mobile Payment. Grandi vendor e startup hanno fiutato l&#39;enorme possibilit&agrave; di business e iniziano a cavalcarne l&#39;onda. Per citare un esempio, Square Inc., impresa statunitense, &nbsp;fornitrice di un servizio di pagamento elettronico, sorta nel 2010, potrebbe raggiungere facilmente e velocemente una capitalizzazione di 4 miliardi di dollari. Gli investitori non sono indifferenti a dati come quelli finora riportati.</p>",
+                    "Images": null,
                     "Attachments": null,
                     "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
+                    "Link": "http://www.techmate.it/?p=235",
+                    "Section": "Prodotti e soluzioni"
+                },
+                {
                     "Number": 8,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
+                    "Title": "Trasferire denaro: ma la sicurezza?",
+                    "Subtitle": "Dubbi circa le informazioni personali e finanziarie scambiate durante le transazioni",
+                    "Text": "<p><strong>Dubbi circa le informazioni personali e finanziarie scambiate durante le transazioni</strong></p><p>I consumatori si dimostrano affascinati dalla comodit&agrave; di questi strumenti per interagire con le banche ed effettuare pagamenti, ma sono anche fortemente preoccupati per le garanzie che questi offrono in un settore delicato come l&#39; &quot;<strong>MCommerce&quot;</strong>. Telecom Italia e Polo SCS stanno collaborando per creare soluzioni innovative per garantire la sicurezza delle transazioni.</p><p>Strettamente legato al Mobile e al sempre maggiore utilizzo delle sue applicazioni &egrave; la diffusione dei pagamenti con smartphone e tablet attraverso appositi strumenti quali, ad esempio, l&#39;<strong>NFC</strong>.</p><p><strong>NFC -&nbsp;Near Field Communication</strong>&nbsp;&egrave; una tecnologia che consente di far dialogare due dispositivi a breve distanza permettendo lo scambio di informazioni in modo veloce e immediato. In particolare, una ricerca di Juniper Research dichiara che nel corso dei prossimi 36 mesi il mercato delle transazioni Mobile effettuate tramite NFC salir&agrave; a circa 74 miliardi di dollari, confermando questa applicazione quale leader tra gli strumenti a disposizione per l&#39; &quot;MCommerce&quot;&nbsp;entro il 2015.</p><p>Ma l&#39;utilizzo dei dispositivi Mobile per il commercio non si appoggia solo a NFC: sono svariati, infatti, e numerosissimi gli applicativi che permettono di trasferire denaro, interagire con le banche ed effettuare pagamenti e che, sempre secondo la Juniper Research, triplicheranno il valore delle proprie transazioni nei prossimi tre anni.</p><p>Ma i consumatori si dimostrano, seppur affascinati dalla comodit&agrave; di questi strumenti, fortemente preoccupati per le garanzie di sicurezza che questi offrono in un settore cos&igrave; delicato quale il Mobile Payement. In una ricerca condotta da Sybase 365, che ha effettuato il suo secondo sondaggio annuale tra Dirigenti di telefonia mobile, emerge infatti che il 38% degli intervistati &egrave; dubbioso circa le informazioni personali e finanziarie eventualmente scambiate durante le transazioni.</p><p>A tal proposito &egrave; significativo&nbsp;<strong>l&#39;accordo siglato nei mesi scorsi da Telecom Italia con il Polo SCS</strong>&nbsp;(Secured Communicating Solutions), ente riconosciuto a livello mondiale nell&#39;ambito dello sviluppo di prodotti e applicazioni sicure per il Mobile. Obiettivo dell&#39;accordo &egrave; la creazione di&nbsp;<strong>soluzioni innovative basate sulla tecnologia NFC &quot;Sim Based&quot;</strong>, ovvero una nuova versione di NFC che utilizzer&agrave; le funzionalit&agrave; e le garanzie di sicurezza offerte dalle schede Sim inserite in smartphone e tablet.</p><p><strong>Un sinonimo di sicurezza per i consumatori?</strong></p><p>Sicuramente una buona percentuale degli intervistati da Sybase 365 (26%) ritiene che siano proprio gli operatori di telefonia mobile a dover gestire la futura e massiccia diffusione del Mobile Payement, e quindi a doverne garantire la sicurezza. L&#39;azione di Telecom Italia, secondo questi, va quindi nella giusta direzione. Per altri, questo ruolo dovr&agrave; essere coperto dalle banche (24%) o ancora da societ&agrave; di E-Commerce quali Amazon, Goupon o Paypal (19%).</p>",
+                    "Images": null,
                     "Attachments": null,
                     "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
+                    "Link": "http://www.techmate.it/?p=238",
+                    "Section": "Prodotti e soluzioni"
+                },
+                {
                     "Number": 9,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
+                    "Title": "La Cina, mercato fertile per lo sviluppo di Internet",
+                    "Subtitle": "Tra i Paesi emergenti, la Cina è partner ideale per avviare investimenti nel ramo tecnologico",
+                    "Text": "<p>Tra i Paesi emergenti, la Cina &egrave; partner ideale per avviare investimenti nel ramo tecnologico</p><p>I Paesi emergenti, grazie al loro elevato potenziale di sviluppo, costituiscono oggi il traino per l&#39;economia mondiale. Tra questi, la Cina si sta distinguendo come luogo dove effettuare grandi investimenti nei settori Mobile e informatica, grazie al numero esponenzialmente in crescita degli utenti che sfruttano questi dispositivi.</p><p>Secondo il Fondo Monetario Internazionale pi&ugrave; del 70% della crescita economica mondiale &egrave; trainata dai Paesi cosiddetti emergenti (Brasile, Russia, India, Cina)</p><p>La Cina, tra essi, presenta dei numeri che spiegano l&#39;interesse dei giganti dell&#39;Internet, tra i quali Ebay, Amazon, Yahoo, nel considerare alleanze strategiche con questa potenza economica: una popolazione di quasi 1,5 miliardi, con un tasso di crescita del 15-18% annuo. Il numero di utilizzatori Internet aumenta di 800.000 unit&agrave; per settimana, con un monte ore di utilizzo della rete di pi&ugrave; di 2 miliardi di ore/settimana.</p><p>Inoltre, si consideri che uno dei vantaggi legati ad Internet, ben compreso e sfruttato dalle giovani generazioni cinesi, &egrave; la possibilit&agrave; di comunicare in un canale che, sicuramente, &egrave; meno controllabile dalle autorit&agrave; governative, come avviene per i media tradizionali (ci&ograve; spiegherebbe, tra l&#39;altro, il fatto che il 55% dei giovani cinesi, con et&agrave; compresa tra i 18 e i 25 anni, frequenti abitualmente gli Internet Caf&eacute;). Un altro aspetto, quindi, di sicuro interesse per le Internet companies, che vedono nella Cina un enorme mercato anche per analisi ed advertising.</p>",
+                    "Images": null,
+                    "Attachments": null,
+                    "Author": "Redazione Techmate",
+                    "Link": "http://www.techmate.it/?p=240",
+                    "Section": "Focus"
                 }
             ]
         },
         {
-            "Abstract": "Il computer si fa piccolo, ci segue ovunque e cambia il modo di usare la rete, vivere e lavorare. Come si adattano le aziende?",
-            "Color": "#B4D88B",
-            "Content": "- BYOD: tecnologie personalizzate\n- Il Tablet in azienda\n- Internet attraverso il mobile",
-            "Cover": null,
             "Number": 1,
-            "PublishDate": "2012-09",
-            "Published": true,
-            "Articles": [
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 0,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 1,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 2,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 3,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 4,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 5,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 6,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 7,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 8,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 9,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                }
-            ]
+            "Cover": "http://www.techmate.it/techmate_mobile_app/cover/cover_1.jpg",
+            "Color": "#B4D88B",
+            "PublishDate": "Novembre 2012",
+            "Abstract": "Le tecnologie mobili trasformano il business delle aziende. Rendere più flessibile il modo di lavorare risulta fondamentale, ed è su questa certezza che il mondo dell'informatica e dell'innovazione stanno ripensando il loro modello di business.",
+            "Content": "In questo numero:\r\n\r\n- Internet of Things: verso il web 3.0\r\n- Sales Force Automation\r\n- Mobile Payment: il futuro dei nostri acquisti",
+            "Articles": [ ]
         },
         {
-            "Abstract": "Il computer si fa piccolo, ci segue ovunque e cambia il modo di usare la rete, vivere e lavorare. Come si adattano le aziende?",
-            "Color": "#fff200",
-            "Content": "- BYOD: tecnologie personalizzate\n- Il Tablet in azienda\n- Internet attraverso il mobile",
-            "Cover": null,
             "Number": 2,
-            "PublishDate": "2012-12",
-            "Published": true,
-            "Articles": [
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 0,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 1,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 2,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 3,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 4,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 5,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 6,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 7,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 8,
-                    "Section": null,
-                    "Subtitle": null,
-                    "Text": "<p><strong>Articolo uno<\/strong><\/p>",
-                    "Title": null
-                },
-                {
-                    "Attachments": null,
-                    "Author": "Redazione Techmate",
-                    "Images": null,
-                    "Link": null,
-                    "Magazine": 0,
-                    "Number": 9,
-                    "Section": null,
-                    "Subtitle": "sottotitolo",
-                    "Text": "testo",
-                    "Title": "titolo"
-                }
-            ]
+            "Cover": "http://www.techmate.it/techmate_mobile_app/cover/cover_2.jpg",
+            "Color": "#fff200",
+            "PublishDate": "Febbraio 2013",
+            "Abstract": "Tecnologia, Ambiente, Scienza, Media, Politica: ciascuno di questi settori subirà delle variazioni e l'innovazione sarà la chiave per aumentare gli aspetti competitivi di ciascuno di essi.",
+            "Content": "In questo numero:\r\n\r\n- I Big Data nella società digitale\r\n- Mobile Banking: la rivoluzione del rapporto tra banca e cliente\r\n- Domotica: quando la tecnologia entra in casa",
+            "Articles": [ ]
+        },
+        {
+            "Number": 3,
+            "Cover": "http://www.techmate.it/techmate_mobile_app/cover/cover_3.jpg",
+            "Color": "#EE303A",
+            "PublishDate": "Maggio 2013",
+            "Abstract": "Tutto ciò che ci riguarda è salvato sulla \"nuvola\" affinchè ogni informazione sia sempre a portata di mano. La nuova nozione di \"mobilità\" rende i nostri dati più vulnerabili e più a rischio di quanto non lo fossero con i primi pc.",
+            "Content": "In questo numero:\r\n\r\n- Cybercrime: anche il crimine si fa mobile\r\n- Cloud Storage Services\r\n- Le connessioni mobile dell'Africa Subsahariana",
+            "Articles": [ ]
+        },
+        {
+            "Number": 4,
+            "Cover": "http://www.techmate.it/techmate_mobile_app/cover/cover_4.jpg",
+            "Color": "#dedede",
+            "PublishDate": "Settembre 2013",
+            "Abstract": "Cloud computing, app economy, e-commerce, agenda digitale, software security, big data, social media, augmented reality, nuovi sistemi operativi.\r\nQueste parole, utilizzate quotidianamente da ognuno di noi, hanno tutte un comune denominatore che le attraversa trasversalmente: mobile.",
+            "Content": "In questo numero:\r\n\r\n- Bitcoin: la moneta della rete\r\n- Crowdfunding: dal web arriva il finanziamento popolare\r\n- Il lato green dell'industria mobile",
+            "Articles": [ ]
+        },
+        {
+            "Number": 5,
+            "Cover": "http://www.techmate.it/techmate_mobile_app/cover/Copertina_5.png",
+            "Color": "#92d6de",
+            "PublishDate": "Dicembre 2013",
+            "Abstract": "Sfogliare un libro, sentire il rumore della carta e coglierne il profumo sono tutte sensazioni che completano il piacere della lettura.\r\nInnovazione, tecnologia e mobilità hanno trasformato questa esperienza, rendendola forse meno tattile ma comunque sempre coinvolgente. I contenuti cambiano forma, ma la sostanza rimane invariata.",
+            "Content": "- Le APP più scaricate del 2013\r\n- I primi 15 anni di Google\r\n- Action Cam: eroi da Social Network\r\n",
+            "Articles": [ ]
+        },
+        {
+            "Number": 6,
+            "Cover": "http://www.techmate.it/techmate_mobile_app/cover/copertina6small.jpg",
+            "Color": "#065205",
+            "PublishDate": "Marzo 2014",
+            "Abstract": "COME FACEVAMO PRIMA?\r\n\r\nOggi i nostri viaggi sono racchiusi in un'app. I nostri itinerari non sono più segnati sulla cartina e i nostri biglietti non vanno più stampati. \"Acquistare\" e \"possedere\" sono verbi obsoleti, sotituiti da \"condividere\" e \"scambiare\".",
+            "Content": "In questo numero:\r\n- Smartphone e impronte digitali\r\n- Twitter: la nostra vita in 140 caratteri\r\n- Stampare a 3 Dimensioni",
+            "Articles": [ ]
+        },
+        {
+            "Number": 7,
+            "Cover": "http://www.techmate.it/techmate_mobile_app/cover/copertinasette.jpg",
+            "Color": "#7267ae",
+            "PublishDate": "Giugno 2014",
+            "Abstract": "Quando, nel marzo del 1989, Tim Berners suggerì come ottimizzare lo scambio di informazioni tra laboratori e gruppi di ricerca, di certo non immaginava quali sarebbero state le conseguenze. A venticinque anni di distanza dalla nascita del web, la sua intuizione ha permesso di connettere quasi 3 miliardi di persone.",
+            "Content": "In questo numero:\r\n\r\n- Lettori oculari e scanner vocali\r\n- Intervista a @skande\r\n- Google e le campagne pubblicitarie",
+            "Articles": [ ]
+        },
+        {
+            "Number": 8,
+            "Cover": "http://www.techmate.it/techmate_mobile_app/cover/01_08.jpg",
+            "Color": "#ed9213",
+            "PublishDate": "Settembre 2014",
+            "Abstract": "Smartphone, second screen e wearables sono oggi vere e proprie nostre estensioni fisiche che ci consegnto di avere tutto ciò che ci serve, o quasi, sempre a portata di mano. Abbiamo familiarizzato con la tecnologia al punto tale che la nostra mente adesso è digitale. I nostri comportamenti sono digitali.",
+            "Content": "In questo numero:\r\n- Mind Uploading\r\n- Second Screen\r\n- TweetAwards",
+            "Articles": [ ]
+        },
+        {
+            "Number": 9,
+            "Cover": "http://www.techmate.it/techmate_mobile_app/cover/copertina01.jpg",
+            "Color": "#60A3A0",
+            "PublishDate": "18/12/2012",
+            "Abstract": "Proprio come ogni altro mezzo a servizio dell'uomo, la tecnologia è uno strumento e come tale sta alla sensibilità di chi lo usa. Citando una frase di Steve Jobs, il punto non è avere fede nella tecnologia, ma nelle persone. In questo numero abbiamo voluto sottolineare come la tecnologia, quando usata per nobili fini, può significativamente migliorare la vita delle persone con disabilità, ad esempio, o aprire nuovi orizzonti sul fronte dell'insegnamento. E sì, se da una parte è vero che la tecnologia non potrà mai sostituire un insegnante, un insegnante che si serve della tecnologia, potrà forse sostituire un insegnante che la rifiuta. ",
+            "Content": "- FIREFOX OS vs TIZEN\r\n- Google +, Salvatore Russo ne svela tutti i segreti\r\n- Mobile e diversamente abili, quando la tecnologia migliora la vita\r\n",
+            "Articles": [ ]
         }
     ]
-}

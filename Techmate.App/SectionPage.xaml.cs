@@ -54,8 +54,8 @@ namespace Techmate
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             // TODO: creare un modello dati appropriato per il dominio problematico per sostituire i dati di esempio.
-            var group = await TechmateDataSource.GetMagazineAsync((string)e.NavigationParameter);
-            DefaultViewModel["Group"] = group;
+            var group = await TechmateDataSource.GetMagazineAsync((int)e.NavigationParameter);
+            DefaultViewModel["Magazine"] = group;
         }
 
         /// <summary>

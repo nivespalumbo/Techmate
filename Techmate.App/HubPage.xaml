@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:Techmate.DataModel"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
-    d:DataContext="{Binding Source={d:DesignData Source=/DataModel/TechmateSample.json, Type=data:TechmateSampleDataSource}}"
+    d:DataContext="{Binding Source={d:DesignData Source=/DataModel/TechmateSample.json, Type=data:TechmateDataSource}}"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -16,23 +16,27 @@
         </DataTemplate>
 
         <!-- Modello elemento corretto per la griglia come nella sezione 2 -->
-        <DataTemplate x:Key="Standard200x180TileItemTemplate">
-            <Grid Margin="0,0,9.5,9.5" Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}">
-                <Image Source="{Binding Images[0]}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="138.5" Width="138.5" />
-                <TextBlock Text="{Binding Title}" VerticalAlignment="Bottom" Margin="9.5,0,0,6.5" Style="{ThemeResource BaseTextBlockStyle}"/>
-            </Grid>
+        <DataTemplate x:Key="StandardTileItemTemplate">
+            <!--<Grid Margin="0,0,9.5,9.5" Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}">-->
+                <!--<Image Source="{Binding Images[0]}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="138.5" Width="138.5" />-->
+                <TextBlock Text="{Binding Title}" 
+                           VerticalAlignment="Bottom" 
+                           Margin="9.5,0,0,6.5" 
+                           Style="{ThemeResource HeaderTextBlockStyle}"
+                           TextWrapping="Wrap"/>
+            <!--</Grid>-->
         </DataTemplate>
 
         <DataTemplate x:Key="StandardTripleLineItemTemplate">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <!--ColumnDefinition Width="Auto"/-->
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!--Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" Grid.Column="0" HorizontalAlignment="Left">
+                <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" Grid.Column="0" HorizontalAlignment="Left">
                     <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="79" Width="79"/>
-                </-->
+                </Border>
                 <StackPanel Grid.Column="0" Margin="14.5,0,0,0">
                     <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
                     <TextBlock Text="{Binding Subtitle}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" Foreground="{ThemeResource PhoneMidBrush}" />
@@ -44,13 +48,13 @@
         <DataTemplate x:Key="StandardDoubleLineItemTemplate">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <!--ColumnDefinition Width="Auto"/-->
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!--Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" Grid.Column="0" HorizontalAlignment="Left">
+                <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" Grid.Column="0" HorizontalAlignment="Left">
                     <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="79" Width="79"/>
-                </Border-->
+                </Border>
                 <StackPanel Grid.Column="0" Margin="14.5,0,0,0">
                     <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
                     <TextBlock Text="{Binding Subtitle}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"/>
@@ -71,21 +75,17 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                    <StackPanel Grid.Row="0" Margin="0,0,0,5" Background="{Binding Color}" Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Number}" 
-                                               Style="{ThemeResource ListViewItemTextBlockStyle}" Margin="0,0,20,0" />
-                                        <TextBlock Text="{Binding PublishDate}"
-                                               Style="{ThemeResource ListViewItemTextBlockStyle}" />
-                                    </StackPanel>
-
-                                    <StackPanel Grid.Row="1" Margin="0,0,0,5">
-                                        <TextBlock Text="{Binding Abstract}" Style="{ThemeResource ListViewItemTextBlockStyle}"/>
-                                        <TextBlock Text="{Binding Content}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}"/>
+                                    <Border Grid.Column="0" Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,9.5,0,0" HorizontalAlignment="Left">
+                                        <Image Source="{Binding Cover}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="79" Width="79"/>
+                                    </Border>
+                                    <StackPanel Grid.Column="1" Margin="14.5,0,0,0" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Number}" Foreground="{Binding Color}" Style="{ThemeResource ListViewItemTextBlockStyle}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0" />
+                                        <TextBlock Text="{Binding PublishDate}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" Foreground="{ThemeResource PhoneMidBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" />
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
@@ -94,15 +94,15 @@
                 </DataTemplate>
             </HubSection>
 
-            <HubSection x:Uid="HubSection2" Header="SECTION 2" Width="Auto"
-                         DataContext="{Binding Magazines[0]}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
+            <HubSection x:Uid="HubSection2" Header="Techbreak" Width="Auto"
+                         DataContext="{Binding Techbreaks}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
                 <DataTemplate>
-                    <GridView
+                    <!--<GridView
                         Margin="0,9.5,0,0"
-                        ItemsSource="{Binding Articles}"
+                        ItemsSource="{Binding}"
                         AutomationProperties.AutomationId="ItemGridView"
                         AutomationProperties.Name="Items In Group"
-                        ItemTemplate="{StaticResource Standard200x180TileItemTemplate}"
+                        ItemTemplate="{StaticResource StandardTileItemTemplate}"
                         SelectionMode="None"
                         IsItemClickEnabled="True"
                         ItemClick="ItemView_ItemClick"
@@ -112,14 +112,38 @@
                                 <ItemsWrapGrid />
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
-                    </GridView>
+                    </GridView>-->
+                    <ListView ItemsSource="{Binding}" SelectionMode="None" 
+                              IsSwipeEnabled="False" IsItemClickEnabled="True"
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0, 10" MaxWidth="320" Height="220">
+                                    <Grid.Background>
+                                        <ImageBrush ImageSource="{Binding ImageUrl}" Stretch="UniformToFill" />
+                                    </Grid.Background>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="1.1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="1" VerticalAlignment="Stretch" Background="Black" Opacity="0.7" />
+                                    <StackPanel Grid.Row="1" Margin="8">
+                                        <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" 
+                                                   Text="{Binding Title}" MaxLines="1"/>
+                                        <TextBlock Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"
+                                                   Text="{Binding Summary}" MaxLines="2"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </DataTemplate>
             </HubSection>
 
-            <HubSection x:Uid="HubSection3" Header="SECTION 3"
-                        DataContext="{Binding Magazines[0]}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
+            <HubSection x:Uid="HubSection3" Header="Rss"
+                        DataContext="{Binding RSS}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
                 <DataTemplate>
-                    <ListView 
+                    <!--<ListView 
                         AutomationProperties.AutomationId="ItemListViewSection3"
                         AutomationProperties.Name="Items In Group"
                         SelectionMode="None"
@@ -128,11 +152,11 @@
                         ItemTemplate="{StaticResource StandardTripleLineItemTemplate}"
                         ItemClick="ItemView_ItemClick"
                         ContinuumNavigationTransitionInfo.ExitElementContainer="True">
-                    </ListView>
+                    </ListView>-->
                 </DataTemplate>
             </HubSection>
 
-            <HubSection x:Uid="HubSection4" Header="SECTION 4"
+            <!--<HubSection x:Uid="HubSection4" Header="SECTION 4"
                         DataContext="{Binding Magazines[0]}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
                 <DataTemplate>
                     <ListView 
@@ -170,7 +194,7 @@
                         ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     </ListView>
                 </DataTemplate>
-            </HubSection>
+            </HubSection>-->
         </Hub>
     </Grid>
 </Page>
