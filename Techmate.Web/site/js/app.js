@@ -1,5 +1,5 @@
 var mySite = angular.module('mySite', ['ngRoute', 'ngSanitize']);
-
+    
 mySite.factory('mySharedService', function ($rootScope, $http, $filter) {
     var shared = {};
     
@@ -174,6 +174,9 @@ mySite.config(function ($routeProvider) {
         })
         .when('/pushnotifications', {
             templateUrl: 'views/push_notifications.html'
+        })
+        .when('/sponsors', {
+            templateUrl: 'views/sponsors.html'
         })
     	.otherwise({
     	    redirectTo: '/'

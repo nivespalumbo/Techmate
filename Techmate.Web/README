@@ -1,1 +1,8 @@
 http://coreymaynard.com/blog/creating-a-restful-api-with-php/
+
+Da fare:
+- upload multiplo di file https://blueimp.github.io/jQuery-File-Upload/angularjs.html
+- associazione link/allegati
+- gestione degli sponsor
+- registrazione device per notifiche push (registrare su db mysql e non su mongo!)
+- invio notifiche push (copiare da vecchio progetto)
