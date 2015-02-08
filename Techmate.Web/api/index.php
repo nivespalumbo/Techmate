@@ -9,7 +9,7 @@ if (!array_key_exists('HTTP_ORIGIN', $_SERVER)) {
 
 try {
     $API = new ApiController($_REQUEST['request']);
-    echo '{"Response":'.$API->processAPI()."}";
+    echo $API->processAPI();
 } catch (Exception $e) {
     echo json_encode(Array('error' => $e->getMessage()));
 }
